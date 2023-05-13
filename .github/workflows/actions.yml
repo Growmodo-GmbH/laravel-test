@@ -2,17 +2,14 @@ name: Server Actions
  
 on:
   delete:
-    branches:
-     - "!main"
-     - "!deploy-*"
-    
+
 env:
   EVENT_NAME: ${{ github.event_name }}
   EVENT_REF: ${{ github.event.ref }}
-  
+
 jobs:
   actions:
-    if: github.event.ref_type == 'branch' && github.event.ref
+    if: github.event.ref_type == 'branch'
     runs-on: ubuntu-latest
     steps:
     - name: Connect to server
