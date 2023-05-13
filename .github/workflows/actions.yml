@@ -20,4 +20,4 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         port: ${{ secrets.SSH_PORT }}
         key: ${{ secrets.SSH_KEY }}
-        script: 'cd /var/www/projects && ./server_actions.sh ${{ env.EVENT_NAME }} ${{ env.EVENT_REF }}'
+        script: 'cd /var/www/laravel-test-server && ./server_actions.sh ${{ env.EVENT_NAME }} ${{ env.EVENT_REF }}'
