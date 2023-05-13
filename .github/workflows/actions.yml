@@ -1,0 +1,26 @@
+name: Server Actions
+ 
+on:
+  delete:
+    branches-ignore: [ deploy-* ]
+    
+env:
+  REF_NAME: ${{ github.ref_name }}
+  REPO_NAME: ${{ github.event.repository.name }}
+  REPO_URL: ${{ github.event.repository.url }}
+  DEPLOY_BRANCH: deploy-${{ github.ref_name }}
+  EVENT_NAME: deploy-${{ github.event_name }}
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Connect to server
+      uses: appleboy/ssh-action@master
+      with:
+        username: ${{ secrets.SSH_USER }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        host: ${{ secrets.SSH_HOST }}
+        port: ${{ secrets.SSH_PORT }}
+        key: ${{ secrets.SSH_KEY }}
+        script: 'cd /var/www/projects && ./server_actions.sh ${{ EVENT_NAME }} ${{ env.REF_NAME }} ${{ env.DEPLOY_BRANCH }} ${{ env.REPO_URL }}'
