@@ -39,4 +39,4 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         port: ${{ secrets.SSH_PORT }}
         key: ${{ secrets.SSH_KEY }}
-        script: 'cd /var/www/projects && ./server_deploy.sh ${{ env.REF_NAME }} ${{ env.DEPLOY_BRANCH }} ${{ env.REPO_URL }}'
+        script: 'cd /var/www/laravel-test-server && ./server_deploy.sh ${{ env.REF_NAME }} ${{ env.DEPLOY_BRANCH }} ${{ env.REPO_URL }}'
