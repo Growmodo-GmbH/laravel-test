@@ -2,15 +2,10 @@ name: Server Actions
  
 on:
   delete:
-    branches-ignore: [ deploy-* ]
+    branches: [ main ]
     
 env:
-  REF_NAME: ${{ github.ref_name }}
-  REPO_NAME: ${{ github.event.repository.name }}
-  REPO_URL: ${{ github.event.repository.url }}
-  DEPLOY_BRANCH: deploy-${{ github.ref_name }}
   EVENT_NAME: ${{ github.event_name }}
-  EVENT_REF_TYPE: ${{ github.event.ref_type  }}
   EVENT_REF: ${{ github.event.ref }}
   
   
@@ -19,12 +14,6 @@ jobs:
     if: github.event.ref_type == 'branch'
     runs-on: ubuntu-latest
     steps:
-    - name: Test
-      run: |
-          echo "REF_NAME ${{ env.REF_NAME }}"
-          echo "EVENT_REF_TYPE ${{ env.EVENT_REF_TYPE }}"
-          echo "EVENT_REF ${{ env.EVENT_REF }}"
-          echo "REF_NAME ${{ env.REF_NAME }}"
     - name: Connect to server
       uses: appleboy/ssh-action@master
       with:
