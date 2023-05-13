@@ -2,16 +2,43 @@ name: Deploy to Test Server
  
 on:
   push:
-    branches-ignore: [ main, deploy-* ]
+    branches-ignore: [ main, deploy-*, patch-*, fix-*, feature-* ]
     
 env:
   REF_NAME: ${{ github.ref_name }}
   REPO_NAME: ${{ github.event.repository.name }}
   REPO_URL: ${{ github.event.repository.url }}
   DEPLOY_BRANCH: deploy-${{ github.ref_name }}
+  EVENT_NAME: ${{ github.event_name }}
+  DB_DEFAULT: "laravel-test"
   
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Environment
+      run: |
+        npm install dotenv --global
+    - name: Load Environment Variables
+      run: |
+        if [ -f .env ]; then
+          export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
+        fi
+        echo "DB_DATABASE=$(echo $DB_DATABASE)" >> $GITHUB_ENV
+    - name: Check DB_DATABASE
+      run: |
+        if [ "${{ env.DB_DATABASE }}" = "${{ env.DB_DEFAULT }}" -o "${{ env.DB_DATABASE }}" = "" ]; then
+          echo "DB_DATABASE is not configured. Exiting workflow."
+          echo "" && exit 1
+        else
+          echo "DB_DATABASE is configured: ${{ env.DB_DATABASE }}"
+          echo "github.env.DB_DATABASE: ${{ github.env.DB_DATABASE }}"
+          echo "github.env: ${{ github.env }}"
+        fi
+        
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
