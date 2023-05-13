@@ -2,12 +2,13 @@ name: Server Actions
  
 on:
   delete:
-    branches: [ '!main', '!deploy-*' ]
+    branches:
+     - "!main"
+     - "!deploy-*"
     
 env:
   EVENT_NAME: ${{ github.event_name }}
   EVENT_REF: ${{ github.event.ref }}
-  
   
 jobs:
   actions:
