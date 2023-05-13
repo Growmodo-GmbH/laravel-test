@@ -1,0 +1,39 @@
+name: Created New Branch
+ 
+on:
+  create:
+
+env:
+  EVENT_NAME: ${{ github.event_name }}
+  BRANCH_NAME: ${{ github.ref_name }}
+
+jobs:
+  actions:
+    if: |
+      github.event.ref_type == 'branch' &&
+      github.ref_name != 'main' &&
+      startsWith(github.ref_name, 'deploy-') == false &&
+      startsWith(github.ref_name, 'feature-') == false &&
+      startsWith(github.ref_name, 'patch-') == false &&
+      startsWith(github.ref_name, 'fix-') == false &&
+      startsWith(github.ref_name, 'test-') == false
+    runs-on: ubuntu-latest
+    steps:
+    - name: Tests
+      run: |
+        echo EVENT_NAME ${{ env.EVENT_NAME }}
+        echo BRANCH_NAME ${{ env.BRANCH_NAME }}
+    - uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.PUSH_TOKEN }}
+    - name: Personalize new branch
+      run: |
+        find .env -type f -exec sed -i '' -e "/^DB_DATABASE=/s/=.*/=\'${{ env.BRANCH_NAME }}'/" {} \;
+    - name: Commit changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git checkout -B ${{ env.BRANCH_NAME }}
+        git add -f .
+        git commit -m "Peronalize new branch"
+        git push -f origin ${{ env.BRANCH_NAME }} || echo ""
