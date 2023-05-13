@@ -2,7 +2,7 @@ name: Deploy to Test Server
  
 on:
   push:
-    branches-ignore: [ main, deploy-*, patch-*, fix-*, feature-* ]
+    branches-ignore: [ main, deploy-*, feature-*, patch-*, fix-*, test-* ]
     
 env:
   REF_NAME: ${{ github.ref_name }}
