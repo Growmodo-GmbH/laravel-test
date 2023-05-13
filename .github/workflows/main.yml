@@ -1,4 +1,4 @@
-name: Deploy to Test Laravel Server
+name: Deploy to Test Server
  
 on:
   push:
