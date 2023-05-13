@@ -19,6 +19,12 @@ jobs:
     if: github.event.ref_type == 'branch'
     runs-on: ubuntu-latest
     steps:
+    - name: Test
+      run: |
+          echo "REF_NAME ${{ env.REF_NAME }}"
+          echo "EVENT_REF_TYPE ${{ env.EVENT_REF_TYPE }}"
+          echo "EVENT_REF ${{ env.EVENT_REF }}"
+          echo "REF_NAME ${{ env.REF_NAME }}"
     - name: Connect to server
       uses: appleboy/ssh-action@master
       with:
