@@ -21,10 +21,8 @@
 
 ## Instructions
  - Fork the repository.
- - Check the branch assigned to you.
  - Clone the repository branch assigned to you onto your local machine.
  - Set up Laravel on your local machine; you can also use Docker.
- - Update the value of `DB_DATABASE` in the `.env` file to the `branch name` assigned to you.
  - Update other variables in the `.env` file according to your needs, except for the database credentials starting with `DB_*`.
  - Work on the task assigned to you.
  - When you are ready, make a Pull Request to the `same branch` you are working on.
@@ -32,6 +30,7 @@
 ## Notes
  - Don not add `.env` to `.gitignore`.
  - _Tip_: Use [docker](https://www.docker.com) for local development.
+ - _***Important***_: Make sure to work and submit Pull Request (`PR`) only on the branch that is assigned to you.
 
 ### View Deployment:
 - When no errors encounter you should be able to see your app at: [http://test.growmodo.com/\<BRANCH-NAME\>/public](http://test.growmodo.com/BRANCH-NAME/public)
