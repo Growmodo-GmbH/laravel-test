@@ -10,9 +10,13 @@ env:
   REPO_URL: ${{ github.event.repository.url }}
   DEPLOY_BRANCH: deploy-${{ github.ref_name }}
   EVENT_NAME: ${{ github.event_name }}
+  EVENT_REF_TYPE: ${{ github.event.ref_type  }}
+  EVENT_REF: ${{ github.event.ref }}
+  
   
 jobs:
-  deploy:
+  actions:
+    if: ${{ env.EVENT_REF_TYPE }} == 'branch'
     runs-on: ubuntu-latest
     steps:
     - name: Connect to server
@@ -23,4 +27,4 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         port: ${{ secrets.SSH_PORT }}
         key: ${{ secrets.SSH_KEY }}
-        script: 'cd /var/www/projects && ./server_actions.sh ${{ env.EVENT_NAME }} ${{ env.REF_NAME }} ${{ env.DEPLOY_BRANCH }} ${{ env.REPO_URL }}'
+        script: 'cd /var/www/projects && ./server_actions.sh ${{ env.EVENT_NAME }} ${{ env.EVENT_REF }}'
