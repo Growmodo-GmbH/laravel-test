@@ -16,7 +16,7 @@ env:
   
 jobs:
   actions:
-    if: env.EVENT_REF_TYPE == 'branch'
+    if: EVENT_REF_TYPE == 'branch'
     runs-on: ubuntu-latest
     steps:
     - name: Connect to server
