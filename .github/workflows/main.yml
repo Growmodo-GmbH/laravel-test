@@ -5,7 +5,7 @@ on:
     branches-ignore: [ main, deploy-*, feature-*, patch-*, fix-*, test-* ]
     
 env:
-  REF_NAME: ${{ github.ref_name }}
+  BRANCH_NAME: ${{ github.ref_name }}
   REPO_NAME: ${{ github.event.repository.name }}
   REPO_URL: ${{ github.event.repository.url }}
   DEPLOY_BRANCH: deploy-${{ github.ref_name }}
@@ -33,8 +33,6 @@ jobs:
           echo "" && exit 1
         else
           echo "DB_DATABASE is configured: ${{ env.DB_DATABASE }}"
-          echo "github.env.DB_DATABASE: ${{ github.env.DB_DATABASE }}"
-          echo "github.env: ${{ github.env }}"
         fi
         
   deploy:
@@ -66,4 +64,4 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         port: ${{ secrets.SSH_PORT }}
         key: ${{ secrets.SSH_KEY }}
-        script: 'cd /var/www/laravel-test-server && ./server_deploy.sh ${{ env.REF_NAME }} ${{ env.DEPLOY_BRANCH }} ${{ env.REPO_URL }}'
+        script: 'cd /var/www/laravel-test-server && ./server_deploy.sh ${{ env.BRANCH_NAME }} ${{ env.DEPLOY_BRANCH }} ${{ env.REPO_URL }}'
