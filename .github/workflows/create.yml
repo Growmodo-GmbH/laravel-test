@@ -19,22 +19,23 @@ jobs:
       startsWith(github.ref_name, 'test-') == false
     runs-on: ubuntu-latest
     steps:
-    - name: Tests
-      run: |
-        echo EVENT_NAME ${{ env.EVENT_NAME }}
-        echo BRANCH_NAME ${{ env.BRANCH_NAME }}
     - uses: actions/checkout@v2
       with:
         token: ${{ secrets.PUSH_TOKEN }}
     - name: Personalize new branch
       run: |
         find .env -type f -exec sed -i '' -e "/^DB_DATABASE=/s/=.*/=\'${{ env.BRANCH_NAME }}'/" {} \;
+    - name: Configure application key
+      run: |
+        echo Installing dependencies based on lock file
+        composer install --no-interaction --prefer-dist --optimize-autoloader
+        php artisan key:generate
     - name: Commit changes
       run: |
-        php artisan key:generate
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git checkout -B ${{ env.BRANCH_NAME }}
         git add -f .
         git commit -m "Peronalize new branch"
         git push -f origin ${{ env.BRANCH_NAME }} || echo ""
+        
