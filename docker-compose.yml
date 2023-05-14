@@ -1,0 +1,33 @@
+services:
+  php:
+    build:
+      args:
+          user: vscode
+          uid: 1000
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    working_dir: /var/www
+    volumes:
+        - ./:/var/www
+
+  nginx:
+    image: nginx:alpine
+    ports:
+        - 80:80
+        - 443:443
+    volumes:
+        - ./:/var/www
+    depends_on:
+      - php
+
+  db:
+    image: mariadb
+    ports:
+      - 3306:3306
+    env_file:
+      - .env
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=root

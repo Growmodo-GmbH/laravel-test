@@ -1,0 +1,38 @@
+// See https://aka.ms/vscode-remote/devcontainer.json for format details.
+{
+    "name": "Laravel Development",
+    "dockerComposeFile": ["../docker-compose.yml"],
+    "workspaceFolder": "/var/www",
+    "service": "app",
+    "shutdownAction": "stopCompose",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuretools.vscode-docker",
+                "editorconfig.editorconfig",
+                "ryannaddy.laravel-artisan",
+                "amiralizadeh9480.laravel-extra-intellisense",
+                "codingyu.laravel-goto-view",
+                "mikestead.dotenv",
+                "christian-kohler.path-intellisense"
+            ],
+            "settings": {
+                "#terminal.integrated.shell.linux": "/bin/bash",
+                "php.validate.executablePath": "/usr/local/bin/php"
+            }
+        }
+    },
+    
+    "remoteUser": "www-data",
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    "forwardPorts": [80],
+
+    // Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "cd ../ && ./init_setup.sh",
+	"portsAttributes": {
+		"80": {
+			"label": "HTTP",
+            "onAutoForward": "openPreview"
+		}
+	}
+}
