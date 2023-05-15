@@ -22,14 +22,14 @@
 ## Instructions
  - Fork the repository.
  - Clone the repository branch assigned to you onto your local machine.
- - Set up Laravel on your local machine; you can also use Docker.
+ - Set up Laravel on your local machine; you can also use Docker or Codespace.
  - Update other variables in the `.env` file according to your needs, except for the database credentials starting with `DB_*`.
  - Work on the task assigned to you.
  - When you are ready, make a Pull Request to the `same branch` you are working on.
 
 ## Notes
  - Don not add `.env` to `.gitignore`.
- - _Tip_: Use [docker](https://www.docker.com) for local development.
+ - Branches that starts with `deploy-` are auto generated, do not make changes on this branches.
  - _***Important***_: Make sure to work and submit Pull Request (`PR`) only on the branch that is assigned to you.
 
 ### View Deployment:
