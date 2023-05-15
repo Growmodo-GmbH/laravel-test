@@ -20,19 +20,45 @@
 </p>
 
 ## Instructions
- - Fork the repository.
- - Clone the repository branch assigned to you onto your local machine.
- - Set up Laravel on your local machine; you can also use Docker or Codespace.
- - Update other variables in the `.env` file according to your needs, except for the database credentials starting with `DB_*`.
+ - Fork the `main` branch of this repository.
+ - Clone the repository you forked on your local machine, <a href="#setup">and setup to work on the branch assigned to you</a>.
+ - Update `.env` according to your needs, <code style="color : red">except</code> for the database credentials starting with `DB_*`.
  - Work on the task assigned to you.
- - When you are ready, make a Pull Request to the `same branch` you are working on.
+ - When you are ready, make a <a href="#push-and-pull-request-pr">Pull Request</a> to the `same branch` you are working on.
+
+## Setup
+ - Getting the specific branch assigned to you. Example branch: `john-laravel-test`
+ - NOTE: Replace `john-laravel-test` with the branch name assigned to you
+ 
+ - First, add this repo as new remote
+ ```bash
+ git remote add growmodo https://github.com/Growmodo-GmbH/laravel-test
+ ```
+ - Pull the branch from the remote repository
+ ```bash
+ git pull growmodo john-laravel-test
+ ```
+ - Make a local checkout of your branch
+ ```bash
+ git checkout -b john-laravel-test growmodo/john-laravel-test
+ ```
+ - Then start working on the task assigned to you.
+
+## Push and Pull Request (`PR`)
+ - Push changes to the specific branch assigned to you. Example branch: `john-laravel-test`
+ - NOTE: Replace `john-laravel-test` with the branch name assigned to you
+ ```bash
+ git push origin john-laravel-test
+ ```
+ - Then make a pull request from your from the branch you are working to the same branch on growmodo repository
 
 ## Notes
  - Don not add `.env` to `.gitignore`.
+ - Don't update database credentials, all keys starting with `DB_*`.
  - Branches that starts with `deploy-` are auto generated, do not make changes on this branches.
  - _***Important***_: Make sure to work and submit Pull Request (`PR`) only on the branch that is assigned to you.
 
-### View Deployment:
+## View Deployment
 - When no errors encounter you should be able to see your app at: [http://test.growmodo.com/\<BRANCH-NAME\>/public/](http://test.growmodo.com/BRANCH-NAME/public/)
 - Replace `<BRANCH-NAME>` with the name of the branch you are working to view the deployed app.
 
