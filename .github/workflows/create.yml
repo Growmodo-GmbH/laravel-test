@@ -35,7 +35,8 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git checkout -B ${{ env.BRANCH_NAME }}
-        git add -f .
+        echo Commit .env updates
+        git add -f .env
         git commit -m "Peronalize new branch"
         git push -f origin ${{ env.BRANCH_NAME }} || echo ""
         
