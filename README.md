@@ -50,7 +50,7 @@
  ```bash
  git push origin john-laravel-test
  ```
- - Then make a pull request from your from the branch you are working to the same branch on growmodo repository
+ - Then make a pull request from the branch you are working to the same branch on growmodo repository
 
 ## Notes
  - Don not add `.env` to `.gitignore`.
