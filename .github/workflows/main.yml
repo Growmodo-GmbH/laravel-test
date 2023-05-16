@@ -50,7 +50,7 @@ jobs:
     - run: npm install
     - run: npm run build
     - name: Updating APP_URL
-      run : |
+      run: |
         export host_string=$(printf '%s\n' "${{ env.DEPLOY_HOST }}" | sed 's:/:\\&:g')
         find .env -type f -exec sed -i '' -e "/^APP_URL=/s/=.*/=\'$host_string'/" {} \;
     - name: Commit built assets
@@ -58,6 +58,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git checkout -B ${{ env.DEPLOY_BRANCH }}
+        git add -f .env
         git add -f public/
         git commit -m "Build front-end assets"
         git push -f origin ${{ env.DEPLOY_BRANCH }}
