@@ -49,6 +49,9 @@ jobs:
         node-version: '16.x'
     - run: npm install
     - run: npm run build
+    - name: Updating APP_URL
+    - run : |
+        find .env -type f -exec sed -i '' -e "/^APP_URL=/s/=.*/=\'${{ env.DEPLOY_HOST }}'/" {} \;
     - name: Commit built assets
       run: |
         git config --local user.email "action@github.com"
