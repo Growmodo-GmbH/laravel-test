@@ -9,6 +9,7 @@ env:
   REPO_NAME: ${{ github.event.repository.name }}
   REPO_URL: ${{ github.event.repository.url }}
   DEPLOY_BRANCH: deploy-${{ github.ref_name }}
+  DEPLOY_HOST: "${{ secrets.LARAVEL_TEST_HOST }}/${{ github.ref_name }}/public/"
   EVENT_NAME: ${{ github.event_name }}
   DB_DEFAULT: "laravel-test"
   
@@ -53,6 +54,8 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git checkout -B ${{ env.DEPLOY_BRANCH }}
+        echo Updating APP_URL
+        find .env -type f -exec sed -i '' -e "/^APP_URL=/s/=.*/=\'${{ env.DEPLOY_HOST }}'/" {} \;
         git add -f public/
         git commit -m "Build front-end assets"
         git push -f origin ${{ env.DEPLOY_BRANCH }}
