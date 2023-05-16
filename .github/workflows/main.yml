@@ -51,8 +51,8 @@ jobs:
     - run: npm run build
     - name: Updating APP_URL
       run : |
-        echo ${{ env.DEPLOY_HOST }}
-        find .env -type f -exec sed -i '' -e "/^APP_URL=/s/=.*/=\'test.com'/" {} \;
+        export host_string=$(printf '%s\n' "${{ env.DEPLOY_HOST }}" | sed 's:/:\\&:g')
+        find .env -type f -exec sed -i '' -e "/^APP_URL=/s/=.*/=\'$host_string'/" {} \;
     - name: Commit built assets
       run: |
         git config --local user.email "action@github.com"
