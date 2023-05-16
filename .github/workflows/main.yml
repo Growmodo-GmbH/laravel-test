@@ -58,8 +58,6 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git checkout -B ${{ env.DEPLOY_BRANCH }}
-        echo Updating APP_URL
-        find .env -type f -exec sed -i '' -e "/^APP_URL=/s/=.*/=\'${{ env.DEPLOY_HOST }}'/" {} \;
         git add -f public/
         git commit -m "Build front-end assets"
         git push -f origin ${{ env.DEPLOY_BRANCH }}
