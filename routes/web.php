@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.HomePage');
 });
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function (){
+    Route:: get ('/pages/user/edit',[PagesController::class,'editUser'])->name('edit.user');
+Route:: get ('/pages/user/create',[PagesController::class,'create'])->name('create.user');
+Route:: get ('/pages/users',[PagesController::class,'users'])->name('user');
+Route:: get ('/welcome',[PagesController::class,'index'])->name('welcome');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+});
