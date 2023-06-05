@@ -9,15 +9,6 @@
     A <a href="https://www.growmodo.com" target="_blank">Growmodo</a>'s trial task for laravel developers.
 </p>
 
-<p align="center">
-    Join a fast-growing team of rockstar creatives and code wizards who are passionate about making customers say “WOW”. If you believe you have what it takes and want to grow your career instead of just finding another job - you are at the right place!
-</p>
-
-<p align="center">
-    <a href="https://www.growmodo.com/application" target="_blank">
-        <img src="https://img.shields.io/badge/Apply Now-blue" alt="Apply Now"/>
-    </a>
-</p>
 
 ## Instructions
  - Fork the `main` branch of this repository.
