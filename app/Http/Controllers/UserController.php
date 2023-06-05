@@ -12,8 +12,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $resources = User::all();
-        return UserResource::collection($resources);
+        $users =User::all();
+        return UserResource::collection($users);
     }
 
     /**
@@ -43,13 +43,16 @@ class UserController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {   // return dd($request->all()); 
-        $resource = User::findOrFail($id);
+    {    $resource = User::findOrFail($id);  
+        $resource->update($request->all());
+         $resource->save();
+    
+         
         
-        $resource->fill($request->all());
-        $resource->save();
-        return response()->json(['message' => 'Resource updated']);
+         return response()->json(['message' => 'Resource updated']);
+    
     }
+        
 
     /**
      * Remove the specified resource from storage.
@@ -57,7 +60,9 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         $resource = User::findOrFail($id);
-        $resource->delete();
-        return response()->json(['message' => 'Resource deleted']);
+        $resource->subscription = "unsubscribed";
+        $resource->save();
+      
+        return response()->json(['message' => 'User unsubscribed']);
     }
 }

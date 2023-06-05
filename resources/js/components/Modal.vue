@@ -20,6 +20,7 @@
           <b>name:</b> {{ data.name }} <br />
           <b>email:</b> {{ data.email }}<br />
           <b>Phone:</b> {{ data.phone }}<br />
+          <b>Subscription:</b> {{ data.subscription }}<br />
           <b>Role:</b> <span class="badge bg-danger">{{ data.role }}</span>
             
       </div>

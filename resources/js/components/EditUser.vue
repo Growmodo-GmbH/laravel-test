@@ -15,12 +15,21 @@
     <label for="phone">Phone</label>
     <input type="text" class="form-control" id="phone" v-model="data.phone" placeholder="phone">
   </div>
+
+  <div class="form-group">
+    <label for="subscription">Subscription</label>
+  <select id="subscription" class="form-select" aria-label="Default select example">
+    <option selected> {{ data.subscription }}</option>
+  <option value="unsubscribed">Unsubscribe</option>
+  <option value="subscribed">Subscribed</option>
+  </select>
+</div>
   <div class="form-group">
     <label for="role">Role</label>
     <select id="role" class="form-select" aria-label="Default select example">
   <option selected> {{ data.role }}</option>
-  <option value="Admin">Admin</option>
-  <option value="Guest">Guest</option>
+  <option value="admin">Admin</option>
+  <option value="guest">Guest</option>
   
 </select>
   </div>
@@ -28,6 +37,7 @@
   <button @click="update(data.id)" class="btn btn-primary">Save Changes</button>
 </form>
     </div>
+
 </template>
 
 <script>
@@ -38,6 +48,7 @@
         },
         data(){
              return{ user:[],
+                
              }
         },
         created() {
@@ -54,19 +65,22 @@
                 var email = document.getElementById('email').value;
                 var phone = document.getElementById('phone').value;
                  var role = document.getElementById('role').value;
-                const userdata = {
+                 var subscription = document.getElementById('subscription').value;
+               
+                 const userdata = {
                     'name':name,
                      'email':email,
                      'phone':phone,
                      'role':role,
-                     
-                };
-                axios({url:`http://localhost:8000/api/user/${userid}`,
+                     'subscription': subscription,
+                     };
+                   
+                axios({url:`http://localhost:8000/api/user/`+id,
                     method:'post',
-                    data:userdata
+                    data: userdata
             }).then((res)=> 
-                 window.location.reload
-                (console.log(res.data)))
+                 //window.location.reload
+                (console.log(res)))
               
                 .catch(function (error) 
                 {
