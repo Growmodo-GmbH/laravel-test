@@ -15,9 +15,7 @@ use App\Http\Controllers\PagesController;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.HomePage');
-});
+Route::get('/', [PagesController::class,'landing']);
 
 Auth::routes();
 Route::group(['middleware' => 'auth'], function (){
