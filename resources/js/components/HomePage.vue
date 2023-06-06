@@ -4,14 +4,17 @@
            <div class="col-md-6">
             <button class="btn btn-lg btn-primary" @click="login">
 
-                <a class="nav-link" href="http://test.growmodo.com/marlontamo-laravel-test/public/login">Login</a>
+
+                <a class="nav-link" href="https://test.growmodo.com/marlontamo-laravel-test/public/login">Login</a>
+
 
             </button>
            </div>
            <div class="col-md-6">
             <button class="btn btn-lg btn-success" @click="register">
 
-                <a class="nav-link" href="http://test.growmodo.com/marlontamo-laravel-test/public/register">Register</a>
+                <a class="nav-link" href="https://test.growmodo.com/marlontamo-laravel-test/public/register">Register</a>
+
 
             </button>
            </div>
@@ -28,10 +31,12 @@
         methods:{
             login: function(){
 
-                window.location.href="http://test.growmodo.com/marlontamo-laravel-test/public/login";
+
+                window.location.href="https://test.growmodo.com/marlontamo-laravel-test/public/login";
             },
             register: function(){
-                window.location.href="http://test.growmodo.com/marlontamo-laravel-test/public/register";
+                window.location.href="https://test.growmodo.com/marlontamo-laravel-test/public/register";
+
 
             }
 
