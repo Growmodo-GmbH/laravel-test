@@ -16,6 +16,7 @@ jobs:
       startsWith(github.ref_name, 'feature-') == false &&
       startsWith(github.ref_name, 'patch-') == false &&
       startsWith(github.ref_name, 'fix-') == false &&
+      startsWith(github.ref_name, 'revert-') == false &&
       startsWith(github.ref_name, 'test-') == false
     runs-on: ubuntu-latest
     steps:
