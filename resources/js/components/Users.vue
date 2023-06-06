@@ -58,6 +58,7 @@ import axios from 'axios';
         },
         created(){
 
+
           axios.get('https://test.growmodo.com/marlontamo-laravel-test/public/api/users')
           .then((res) => (this.users = res.data.data))
           .catch(function (error) 
@@ -67,7 +68,6 @@ import axios from 'axios';
         },
         methods:{
             edit : function(id){
-
                 axios.get('https://test.growmodo.com/marlontamo-laravel-test/public/api/user/'+id)
                 .then((res)=> (this.info = res.data.data))
                 .catch(function (error) 
@@ -79,7 +79,9 @@ import axios from 'axios';
             },
             view: function(id){
 
+
                 axios.get('https://test.growmodo.com/marlontamo-laravel-test/public/api/user/'+id)
+
                 .then((res)=> (this.info = res.data.data))
                 .catch(function (error) 
                 {
@@ -89,6 +91,7 @@ import axios from 'axios';
             del: function(id){
                 var user = confirm('are you sure you want to unscubscribe this user?');
                 if(user){
+
 
                     axios.delete('https://test.growmodo.com/marlontamo-laravel-test/public/api/user/'+id)
                 .then((res)=> 
