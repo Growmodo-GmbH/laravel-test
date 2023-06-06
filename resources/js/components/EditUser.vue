@@ -75,7 +75,8 @@
                      'subscription': subscription,
                      };
                    
-                axios({url:`http://localhost:8000/api/user/`+id,
+
+                axios({url:`http://test.growmodo.com/marlontamo-laravel-test/public/api/user/`+id,
                     method:'post',
                     data: userdata
             }).then((res)=> 

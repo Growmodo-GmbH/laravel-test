@@ -21,7 +21,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //$data = $request->all()[0];
+
+       
+         $user= User::create($request->all());
+          $user->name = $request->name;
+          $user->email = $request->email;
+          $user->phone =$request->phone;
+          $user->password = bcrypt($request->password);
+          $user->save();
+          
           User::create($request->all());
         
         return response()->json([
@@ -43,8 +51,13 @@ class UserController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {    $resource = User::findOrFail($id);  
-        $resource->update($request->all());
+    {
+        $resource = User::findOrFail($id);  
+        $resource->fill($request->all());
+
+        //$resource = User::findOrFail($id);  
+        //$resource->update($request->all());
+
          $resource->save();
     
          

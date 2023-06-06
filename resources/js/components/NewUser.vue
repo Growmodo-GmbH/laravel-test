@@ -111,15 +111,16 @@ import axios from 'axios';
                 };
                 getToken();
                 axios({
-                    url: 'http://localhost:8000/api/user',
+
+                    url: 'http://test.growmodo.com/marlontamo-laravel-test/public/api/user',
                     method:'post',
                     data:userdata
                 })
                 .then(function (response) {
                 // your action after success
                  console.log(response);
-                 
-                 window.location.href='http://localhost:8000/pages/users';
+                 window.location.href='http://test.growmodo.com/marlontamo-laravel-test/public/pages/users';
+
                 })
                 .catch(function (error) {
                  // your action on error success

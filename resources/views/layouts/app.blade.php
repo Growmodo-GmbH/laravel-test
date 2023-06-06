@@ -16,7 +16,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     {{-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous"> --}}
     <!-- Scripts -->
-   
+
+    <link href="{{ asset('assets/app-d12a4362.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/app-bbd6a014.css') }}" rel="stylesheet">
+
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     
 </head>
@@ -92,5 +95,6 @@
         </main>
     </div>
 </body>
+<script src="{{ asset('assets/app-d35e88e5.js') }}"></script>
 
 </html>

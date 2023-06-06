@@ -20,4 +20,8 @@ class PagesController extends Controller
   public function editUser(){
     return view('pages.edit-user');
   }
+  public function landing(){
+    return view('pages.HomePage');
+  }
+
 }

@@ -34,16 +34,8 @@
             </table>
           
             <modal :data="info"></modal>
-            <!-- <div class="col-md-4 offset-md-4">
-                <h3>User Details</h3>
-            <b>idNumber:</b> {{ info.id }} <br/>
-          <b>name:</b> {{ info.name }} <br />
-          <b>email:</b> {{ info.email }}<br />
-          <b>Phone:</b> {{ info.phone }}<br />
-          <b>Role:</b> <code>{{ info.role }}</code>
-            </div>
-       <button class="btn btn-warning" @click="passdata(info.id)">edit</button>
-            <div> -->
+
+  
                 <hr />
 
                 
@@ -65,7 +57,8 @@ import axios from 'axios';
 
         },
         created(){
-          axios.get('http://localhost:8000/api/users')
+
+          axios.get('http://test.growmodo.com/marlontamo-laravel-test/public/api/users')
           .then((res) => (this.users = res.data.data))
           .catch(function (error) 
           {
@@ -74,7 +67,8 @@ import axios from 'axios';
         },
         methods:{
             edit : function(id){
-                axios.get('http://localhost:8000/api/user/'+id)
+
+                axios.get('http://test.growmodo.com/marlontamo-laravel-test/public/api/user/'+id)
                 .then((res)=> (this.info = res.data.data))
                 .catch(function (error) 
                 {
@@ -84,7 +78,8 @@ import axios from 'axios';
 
             },
             view: function(id){
-                axios.get('http://localhost:8000/api/user/'+id)
+
+                axios.get('http://test.growmodo.com/marlontamo-laravel-test/public/api/user/'+id)
                 .then((res)=> (this.info = res.data.data))
                 .catch(function (error) 
                 {
@@ -94,8 +89,8 @@ import axios from 'axios';
             del: function(id){
                 var user = confirm('are you sure you want to unscubscribe this user?');
                 if(user){
-                   
-                    axios.delete('http://localhost:8000/api/user/'+id)
+
+                    axios.delete('http://test.growmodo.com/marlontamo-laravel-test/public/api/user/'+id)
                 .then((res)=> 
                  window.location.reload
                 (console.log(res.data)))
