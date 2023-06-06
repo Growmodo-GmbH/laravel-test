@@ -110,7 +110,10 @@ import axios from 'axios';
                      'password':pass,
                 };
                 getToken();
-                axios({ url: 'https://test.growmodo.com/marlontamo-laravel-test/public/api/user',
+
+                axios({
+
+                    url: 'https://test.growmodo.com/marlontamo-laravel-test/public/api/user',
                     method:'post',
                     data:userdata
                 })
@@ -119,7 +122,6 @@ import axios from 'axios';
                  console.log(response);
 
                  window.location.href='https://test.growmodo.com/marlontamo-laravel-test/public/pages/users';
-
 
                 })
                 .catch(function (error) {

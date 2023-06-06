@@ -7,7 +7,6 @@
 
                 <a class="nav-link" href="https://test.growmodo.com/marlontamo-laravel-test/public/login">Login</a>
 
-
             </button>
            </div>
            <div class="col-md-6">
