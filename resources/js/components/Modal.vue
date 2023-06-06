@@ -52,7 +52,7 @@
         methods:{
             passdata: function(id){
                 this.show=!this.show;
-                axios.get('http://localhost:8000/api/user/'+id)
+                axios.get('http://test.growmodo.com/marlontamo-laravel-test/public/api/user/'+id)
                 .then((res)=> (this.pass = res.data.data))
                 .catch(function (error) 
                 {
