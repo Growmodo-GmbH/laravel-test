@@ -23,4 +23,5 @@ class PagesController extends Controller
   public function landing(){
     return view('pages.HomePage');
   }
+
 }
