@@ -59,7 +59,7 @@
  - _***Important***_: Make sure to work and submit Pull Request (`PR`) only on the branch that is assigned to you.
 
 ## View Deployment
-- When no errors encounter you should be able to see your app at: [http://test.growmodo.com/\<BRANCH-NAME\>/public/](http://test.growmodo.com/BRANCH-NAME/public/)
+- When no errors encounter you should be able to see your app at: [https://test.growmodo.dev/\<BRANCH-NAME\>/public/](https://test.growmodo.dev/BRANCH-NAME/public/)
 - Replace `<BRANCH-NAME>` with the name of the branch you are working to view the deployed app.
 
 ## About Laravel
