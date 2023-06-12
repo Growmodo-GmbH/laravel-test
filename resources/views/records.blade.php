@@ -6,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laravel</title>
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
+    @vite('resources/css/app.css')
+    @vite('resources/sass/app.scss')
 </head>
 
 <body class="antialiased">
    <div id="app">
+    <h1>welcome laravel</h1>
+    <button class="btn btn-success">Hello</button>
    </div>
+   @vite('resources/js/app.js')
 </body>
 
 </html> 

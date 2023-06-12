@@ -1,4 +1,4 @@
-// import './bootstrap';
+import './bootstrap';
 import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import Welcome from './Welcome.vue';
