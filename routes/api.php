@@ -19,3 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/records', [RecordController::class, 'userData']);
+Route::delete('/delete/{id}', [RecordController::class, 'delete']);

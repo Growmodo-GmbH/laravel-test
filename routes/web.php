@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\RecordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('records');
 });
+// Route::resource('/records', RecordController::class);
+Route::get('/records', [RecordController::class, 'index']);
+Route::get('/delete/{id}', [RecordController::class, 'delete']);

@@ -10,7 +10,8 @@
 </head>
 
 <body class="antialiased">
-   <div id="app"></div>
+   <div id="app">
+   </div>
 </body>
 
 </html> 
