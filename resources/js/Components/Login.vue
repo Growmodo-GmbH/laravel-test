@@ -11,7 +11,7 @@
                                         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                                             style="width: 185px;" alt="logo">
                                     </div>
-                                    <h1>Login</h1>
+                                    <h1 class="text-center">Login</h1>
                                     <div class="form-outline mb-4">
                                         <input type="email" v-model="user.email" id="form2Example11" class="form-control"
                                             placeholder="Email address" />
@@ -73,7 +73,12 @@ export default {
                                     this.$router.push({ name: 'Welcome' })
                                 }, 1000);
                             } else {
-                                this.$swal('Login Failed!')
+                                this.$swal({
+                                    title: 'Login Failed!',
+                                    text: "Incorrect Credentials..",
+                                    type: 'error',
+                                    confirmButtonColor: '#e81616',
+                                })
                             }
                         } catch (err) {
                             // alert('Error, please try again')
@@ -111,4 +116,8 @@ export default {
 
 .justify-center {
     justify-content: center;
-}</style>
+}
+.text-center{
+  text-align: center !important;
+}
+</style>

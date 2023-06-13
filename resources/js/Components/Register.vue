@@ -11,7 +11,7 @@
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" style="width: 185px;" alt="logo">
                   </div>
                   <!-- <form @submit.prevent="saveData"> -->
-                    <h1>Register</h1>
+                    <h1 class="text-center">Register</h1>
                     <div class="form-outline mb-4">
                       <input type="text" v-model="user.name" id="form2Example11name" class="form-control" placeholder="Name" />
                     </div>
@@ -109,5 +109,8 @@ export default {
 }
 .justify-center{
   justify-content: center;
+}
+.text-center{
+  text-align: center !important;
 }
 </style>
