@@ -11,15 +11,18 @@ class RecordController extends Controller{
         $lists = User::all();
         return view('records', compact('lists'));
     }
+
     public function userData(){
         $data = User::all();
         return response()->json($data);
     }
+
     public function update(Request $request, $id) {
         $data = User::find($id);
         $data->update($request->all());
         return response()->json('User updated');
     }
+    
     public function delete($id){
         $data = User::find($id);
         $data->delete();

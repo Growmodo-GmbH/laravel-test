@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecordController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('/records', [RecordController::class, 'userData']);
 Route::delete('/delete/{id}', [RecordController::class, 'delete']);
+Route::delete('/login', [RecordController::class, 'check']);

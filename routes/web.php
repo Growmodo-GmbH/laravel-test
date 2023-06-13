@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecordController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,4 +19,4 @@ Route::get('/', function () {
 });
 // Route::resource('/records', RecordController::class);
 Route::get('/records', [RecordController::class, 'index']);
-Route::get('/delete/{id}', [RecordController::class, 'delete']);
+Route::get('/login', [LoginController::class, 'index']);
