@@ -13,18 +13,15 @@
                                     </div>
                                     <h1 class="text-center">Login</h1>
                                     <div class="form-outline mb-4">
-                                        <input type="email" v-model="user.email" id="form2Example11" class="form-control"
-                                            placeholder="Email address" />
-                                        <!-- <label class="form-label" for="form2Example11">Email address</label> -->
+                                        <p class="errMsg" v-if="validateError.email">{{ validateError.email[0] }}</p>
+                                        <input type="email" v-model="user.email" id="form2Example11" class="form-control" placeholder="Email address" />
                                     </div>
                                     <div class="form-outline mb-4">
-                                        <input type="password" v-model="user.password" id="form2Example22"
-                                            class="form-control" placeholder="Password" />
-                                        <!-- <label class="form-label" for="form2Example22">Password</label> -->
+                                        <p class="errMsg" v-if="validateError.password">{{ validateError.password[0] }}</p>
+                                        <input type="password" v-model="user.password" id="form2Example22" class="form-control" placeholder="Password" />
                                     </div>
                                     <div class="text-center pt-1 mb-5 pb-1">
-                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button"
-                                            @click="LoginData()">Login</button>
+                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" @click="LoginData()">Login</button>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center pb-4">
                                         <p class="mb-0 me-2">Don't have an account?</p>
@@ -57,7 +54,8 @@ export default {
             user: {
                 email: '',
                 password: ''
-            }
+            },
+            validateError: []
         }
     },
     methods: {
@@ -84,7 +82,9 @@ export default {
                             this.$swal('Error, please try again')
                         }
                     }
-                )
+                ).catch(error => {
+                    this.validateError = error.response.data.errors
+                })
         },
         showRegister() {
             this.$router.push({ name: 'Register' })
@@ -118,5 +118,12 @@ export default {
 }
 .text-center{
   text-align: center !important;
+}
+.errMsg {
+    background: #f513135c;
+    font-size: 12px;
+    padding: 1px;
+    text-align: center;
+    margin: 0 auto;
 }
 </style>
