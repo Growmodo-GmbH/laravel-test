@@ -14,6 +14,7 @@
               <button class="btn btn-primary m1" @click="showView()">View Records</button>
               <button class="btn btn-secondary m1">Unsubscribe</button>
               <button class="btn btn-warning m1">Logout</button>
+              <button class="btn btn-warning m1" @click="showLogin()">Login</button>
             </div>
           </div>
         </div>
@@ -33,6 +34,9 @@ export default {
     showView () {
       this.$router.push({ name: 'Records' })
       // location.reload()
+    },
+    showLogin (){
+      this.$router.push({ name: 'Login' })
     }
   }
 }

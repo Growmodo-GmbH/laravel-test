@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\WelcomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,10 +16,11 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('records');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 // Route::resource('/records', RecordController::class);
-Route::get('/records', [RecordController::class, 'index']);
-Route::get('/login', [LoginController::class, 'index']);
-Route::get('/register', [LoginController::class, 'index']);
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome')->middleware('auth');
+Route::get('/records', [RecordController::class, 'index'])->name('records')->middleware('auth');
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
