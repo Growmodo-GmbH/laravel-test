@@ -13,20 +13,24 @@
                   <!-- <form @submit.prevent="saveData"> -->
                     <h1 class="text-center">Register</h1>
                     <div class="form-outline mb-4">
+                      <p class="errMsg" v-if="validateError.name">{{ validateError.name[0] }}</p>
                       <input type="text" v-model="user.name" id="form2Example11name" class="form-control" placeholder="Name" />
                     </div>
                     <div class="form-outline mb-4">
+                      <p class="errMsg" v-if="validateError.email">{{ validateError.email[0] }}</p>
                       <input type="email" v-model="user.email" id="form2Example11" class="form-control" placeholder="Email address" />
                     </div>
                     <div class="form-outline mb-4">
+                      <p class="errMsg" v-if="validateError.phone">{{ validateError.phone[0] }}</p>
                       <input type="text" v-model="user.phone" id="form2Example111" class="form-control" placeholder="Phone Number" />
                     </div>
                     <div class="form-outline mb-4">
+                      <p class="errMsg" v-if="validateError.password">{{ validateError.password[0] }}</p>
                       <input type="password"  v-model="user.password" id="form2Example22" class="form-control" placeholder="Password" />
                     </div>
                     <div class="form-outline mb-4">
+                      <p class="errMsg" v-if="validateError.password">{{ validateError.password[0] }}</p>
                       <input type="password"  name="password_confirmation" v-model="user.password_confirmation" id="form2Example23" class="form-control" placeholder="Confirm Password" />
-                      <!-- <label class="form-label" for="form2Example22">Password</label> -->
                     </div>
                     <div class="text-center pt-1 mb-5 pb-1">
                       <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" @click="saveData()">Register</button>
@@ -64,7 +68,8 @@ export default {
         email: '',
         phone:'',
         password: ''
-      }
+      },
+      validateError: []
     }
   },
   methods: {
@@ -81,7 +86,9 @@ export default {
             this.$swal('Register Failed!')
             }
           }
-        )
+        ).catch(error => {
+          this.validateError = error.response.data.errors
+        })
   },
   showLogin () {
     this.$router.push({ name: 'Login' })
@@ -112,5 +119,12 @@ export default {
 }
 .text-center{
   text-align: center !important;
+}
+.errMsg {
+    background: #f513135c;
+    font-size: 12px;
+    padding: 1px;
+    text-align: center;
+    margin: 0 auto;
 }
 </style>
