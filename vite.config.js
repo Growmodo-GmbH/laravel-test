@@ -5,7 +5,13 @@ const path = require('path');
 
 export default defineConfig({
     plugins: [
-        vue(),
+        vue({
+            template: {
+                compilerOptions: {
+                    isCustomElement: (tag) => ['b-modal'].includes(tag),
+                }
+            }
+        }),
         laravel({
             input: [
                 'resources/css/app.css',
