@@ -13,8 +13,8 @@
             <div class="flex flex-row justify-center" style="margin: 2em">
               <button class="btn btn-primary m1" @click="showView()">View Records</button>
               <button class="btn btn-secondary m1">Unsubscribe</button>
-              <button class="btn btn-warning m1">Logout</button>
-              <button class="btn btn-warning m1" @click="showLogin()">Login</button>
+              <button class="btn btn-warning m1" @click="logout()">Logout</button>
+              <!-- <button class="btn btn-warning m1" @click="showLogin()">Login</button> -->
             </div>
           </div>
         </div>
@@ -29,6 +29,9 @@
 export default {
   name: 'Welcome',
   data () {
+    return {
+      
+    }
   },
   methods: {
     showView () {
@@ -37,7 +40,17 @@ export default {
     },
     showLogin (){
       this.$router.push({ name: 'Login' })
-    }
+    },
+    logout() {
+      axios.post('/api/logout')
+          .then(({ data }) => {
+              axios.defaults.headers.common['X-CSRF-TOKEN'] = data;
+              this.$router.push({ name: 'Login' })
+          })
+          .catch(function(error){
+              console.log('error')
+          })
+        }
   }
 }
 </script>

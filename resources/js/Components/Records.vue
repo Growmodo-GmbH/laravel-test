@@ -5,7 +5,7 @@
                 <!-- view records -->
                 <div class="flex justify-between items-center p1em">
                     <button class="btn btn-primary" @click="backtoWelcome()">back to welcome page</button>
-                    <!-- <b-button @click="logout()">logout</b-button> -->
+                    <button class="btn btn-success" @click="logout()">logout</button>
                 </div>
                 <div class="col-lg-12 mb-5 mb-lg-0">
                     <div class="card cascading-right" style="
@@ -122,16 +122,15 @@ export default {
             this.$router.push({ name: 'Welcome' })
         },
         logout() {
-            axios.post('http://127.0.0.1:8000/api/logout')
+            console.log('hsdsdsi')
+            axios.post('/api/logout')
                 .then(({ data }) => {
                     axios.defaults.headers.common['X-CSRF-TOKEN'] = data;
                     this.$router.push({ name: 'Login' })
-                });
-            // .then(function(response){
-            // })
-            // .catch(function(error){
-            //   console.log('error')
-            // })
+                })
+                .catch(function(error){
+                    console.log('error')
+                })
         }
     }
 }

@@ -76,7 +76,6 @@ export default {
                                 this.$swal({
                                     title: 'Login Failed!',
                                     text: "Incorrect Credentials..",
-                                    type: 'error',
                                     confirmButtonColor: '#e81616',
                                 })
                             }
