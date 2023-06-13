@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\LoginController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('/login', [LoginController::class, 'check']);
+Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/records', [RecordController::class, 'userData']);
 Route::delete('/delete/{id}', [RecordController::class, 'delete']);
-Route::delete('/login', [RecordController::class, 'check']);

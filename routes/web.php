@@ -20,3 +20,4 @@ Route::get('/', function () {
 // Route::resource('/records', RecordController::class);
 Route::get('/records', [RecordController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
+Route::get('/register', [LoginController::class, 'index']);
