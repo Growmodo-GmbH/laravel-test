@@ -4,8 +4,8 @@
             <div class="row g-0 align-items-center">
                 <!-- view records -->
                 <div class="flex justify-between items-center p1em">
-                    <button class="btn btn-primary" @click="backtoWelcome()">back to welcome page</button>
-                    <button class="btn btn-success" @click="logout()">logout</button>
+                    <button class="btn btn-primary mainColor" @click="backtoWelcome()">back to welcome page</button>
+                    <button class="btn btn-primary mainColor" @click="logout()">logout</button>
                 </div>
                 <div class="col-lg-12 mb-5 mb-lg-0">
                     <div class="card cascading-right" style="
@@ -48,23 +48,20 @@
                 </div>
             </div>
         </div>
-        <!-- edit modal -->
-        <template>
-            <b-modal id="modal-1" v-model="editModal" title="Edit Records" no-close-on-esc no-close-on-backdrop centered hide-footer>
-                <div class="col-12 p1" v-for="value in viewData" :key="value.id">
-                    <label for="">Username</label>
-                    <input type="text" class="col-12 p0 form-control" v-model="value.name">
-                    <label for="">Email Address</label>
-                    <input type="text" class="col-12 p0 form-control" v-model="value.email">
-                    <label for="">Phone Number</label>
-                    <input type="text" class="col-12 p0 form-control" v-model="value.phone">
-                    <div class="py1"></div>
-                    <div class="">
-                        <button class="btn btn-primary" @click="updateList(value.id, value)">Update</button>
-                    </div>
+        <div class="updateSection" v-if="editModal">
+            <div class="col-12 p1" v-for="value in viewData" :key="value.id">
+                <label for="" class="mb1 white mt1 flex">Username</label>
+                <input type="text" class="col-12 p0 form-control" v-model="value.name">
+                <label for="" class="mb1 white mt1 flex">Email Address</label>
+                <input type="text" class="col-12 p0 form-control" v-model="value.email">
+                <label for="" class="mb1 white mt1 flex">Phone Number</label>
+                <input type="text" class="col-12 p0 form-control" v-model="value.phone">
+                <div class="py1"></div>
+                <div class="">
+                    <button class="btn btn-primary" @click="updateList(value.id, value)">Update</button>
                 </div>
-            </b-modal>
-        </template>
+            </div>
+        </div>
     </section>
 </template>
 <script>
@@ -101,7 +98,6 @@ export default {
             axios.put(`http://127.0.0.1:8000/api/update/${id}`, value)
                 .then(function (response) {
                     alert('User has been added successfully saved')
-                    // this.$swal('User has been added successfully!')
                     location.reload();
                 })
                 .catch(function (error) {
@@ -172,4 +168,27 @@ export default {
 
 .p1em {
     padding: 1em;
-}</style>
+}
+.updateSection {
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    border: 1px solid #beb4b4;
+    margin: 2em;
+    padding: 2em;
+    border-radius: 4px;
+}
+.white {
+    color: #ffff;
+}
+
+.mb1 {
+    margin-bottom: 1rem;
+}
+
+.mt1 {
+    margin-top: 1rem;
+}
+.mainColor {
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    border-color:#ee7724
+}
+</style>

@@ -25,3 +25,4 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/register', [RegisterController::class, 'store'])->name('register');
 Route::get('/records', [RecordController::class, 'userData'])->name('records');
 Route::delete('/delete/{id}', [RecordController::class, 'delete'])->name('delete');
+Route::put('/update/{id}', [RecordController::class, 'update']);
