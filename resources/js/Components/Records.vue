@@ -98,7 +98,7 @@ export default {
             axios.put(`http://127.0.0.1:8000/api/update/${id}`, value)
                 .then(function (response) {
                     alert('User has been added successfully saved')
-                    // location.reload();
+                    this.editModal = false
                 })
                 .catch(function (error) {
                     console.log('error')
@@ -118,10 +118,9 @@ export default {
             this.$router.push({ name: 'Welcome' })
         },
         logout() {
-            console.log('hsdsdsi')
             axios.post('/api/logout')
                 .then(({ data }) => {
-                    axios.defaults.headers.common['X-CSRF-TOKEN'] = data;
+                    location.reload()
                     this.$router.push({ name: 'Login' })
                 })
                 .catch(function(error){

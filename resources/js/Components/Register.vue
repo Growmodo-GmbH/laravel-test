@@ -126,5 +126,6 @@ export default {
     padding: 1px;
     text-align: center;
     margin: 0 auto;
+    border-radius: 3px;
 }
 </style>
