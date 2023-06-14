@@ -22,6 +22,18 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::table('users')->insert(
+            array(
+                'name' => 'admin',
+                'email' => 'admin@gmail.com',
+                'phone' => '09123456789',
+                'password' => '$2y$10$D7UMeBiSfBB3TtXqADB/xe1cTkP8fezswuz.JifQVvfdjJK4fmHwO',
+                'usertype' => 0,
+                'created_at' => '2023-06-15 01:47:39',
+                'updated_at' => '2023-06-15 01:47:39'
+            )
+        );
     }
 
     /**
