@@ -95,7 +95,7 @@ export default {
             this.viewData = data
         },
         updateList(id, value) {
-            axios.put(`http://127.0.0.1:8000/api/update/${id}`, value)
+            axios.put(`/api/update/${id}`, value)
                 .then(function (response) {
                     alert('User has been added successfully saved')
                     location.reload()
