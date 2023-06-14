@@ -8,19 +8,16 @@
               background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
               ">
             <div class="card-body p-5 shadow-5 text-center">
-              <h2 class="fw-bold mb-5" style="color: #ffff;">Welcome User</h2>
+              <h2 class="fw-bold mb-5" style="color: #ffff;">Welcome, {{ userData.name }}!</h2>
             </div>
             <div class="flex flex-row justify-center" style="margin: 2em">
-              <button class="btn btn-primary m1" @click="showView()">View Records</button>
-              <button class="btn btn-secondary m1">Unsubscribe</button>
+              <button class="btn btn-primary m1" @click="showView()" v-if="userData.usertype <= 0">View Records</button>
+              <button class="btn btn-secondary m1" v-else>Unsubscribe</button>
               <button class="btn btn-warning m1" @click="logout()">Logout</button>
               <!-- <button class="btn btn-warning m1" @click="showLogin()">Login</button> -->
             </div>
           </div>
         </div>
-        <!-- <div class="col-lg-6 mb-5 mb-lg-0" style="opacity:0">
-          <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" class="w-100 rounded-4 shadow-4" alt="" />
-        </div> -->
       </div>
     </div>
   </section>
@@ -30,8 +27,11 @@ export default {
   name: 'Welcome',
   data () {
     return {
-      
+      userData: {}
     }
+  },
+  mounted () {
+    this.userSession()
   },
   methods: {
     showView () {
@@ -43,14 +43,24 @@ export default {
     },
     logout() {
       axios.post('/api/logout')
-          .then(({ data }) => {
-              location.reload()
-              this.$router.push({ name: 'Login' })
-          })
-          .catch(function(error){
-              console.log('error')
-          })
-        }
+        .then(({ data }) => {
+            location.reload()
+            this.$router.push({ name: 'Login' })
+        })
+        .catch(function(error){
+            console.log('error')
+        })
+      },
+
+    userSession() {
+      const vm = this
+      axios.get('/api/userSession').then(function (res) {
+        vm.userData = res.data.userData
+      }).catch(function (err) {
+          console.log('ERROR!')
+      })
+      }
+
   }
 }
 </script>
