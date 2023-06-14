@@ -98,7 +98,7 @@ export default {
             axios.put(`http://127.0.0.1:8000/api/update/${id}`, value)
                 .then(function (response) {
                     alert('User has been added successfully saved')
-                    this.editModal = false
+                    location.reload()
                 })
                 .catch(function (error) {
                     console.log('error')

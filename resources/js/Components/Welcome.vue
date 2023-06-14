@@ -12,7 +12,7 @@
             </div>
             <div class="flex flex-row justify-center" style="margin: 2em">
               <button class="btn btn-primary m1" @click="showView()" v-if="userData.usertype <= 0">View Records</button>
-              <button class="btn btn-secondary m1" v-else>Unsubscribe</button>
+              <button class="btn btn-secondary m1" @click="unsubscribe(userData.id, index)" v-else>Unsubscribe</button>
               <button class="btn btn-warning m1" @click="logout()">Logout</button>
               <!-- <button class="btn btn-warning m1" @click="showLogin()">Login</button> -->
             </div>
@@ -51,15 +51,24 @@ export default {
             console.log('error')
         })
       },
-
-    userSession() {
-      const vm = this
-      axios.get('/api/userSession').then(function (res) {
-        vm.userData = res.data.userData
-      }).catch(function (err) {
-          console.log('ERROR!')
-      })
-      }
+      userSession() {
+        const vm = this
+        axios.get('/api/userSession').then(function (res) {
+          vm.userData = res.data.userData
+        }).catch(function (err) {
+            console.log('ERROR!')
+        })
+        },
+        unsubscribe(id, index) {
+          axios.delete(`/api/delete/${id}`)
+          .then(function (response) {
+              alert('success')
+              location.reload()
+          })
+          .catch(function (error) {
+              console.log('error')
+          })
+        }
 
   }
 }
