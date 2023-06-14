@@ -28,7 +28,7 @@ return new class extends Migration
                 'name' => 'admin',
                 'email' => 'admin@gmail.com',
                 'phone' => '09123456789',
-                'password' => '$2y$10$D7UMeBiSfBB3TtXqADB/xe1cTkP8fezswuz.JifQVvfdjJK4fmHwO',
+                'password' => '$2y$10$D7UMeBiSfBB3TtXqADB/xe1cTkP8fezswuz.JifQVvfdjJK4fmHwO', //admin123
                 'usertype' => 0,
                 'created_at' => '2023-06-15 01:47:39',
                 'updated_at' => '2023-06-15 01:47:39'
