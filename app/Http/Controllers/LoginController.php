@@ -32,4 +32,7 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return $request->session()->token();
     }
+    public function userSession(Request $request) {
+       return $request->session()->all();
+    }
 }
