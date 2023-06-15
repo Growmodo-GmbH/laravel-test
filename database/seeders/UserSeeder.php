@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -25,11 +26,14 @@ class UserSeeder extends Seeder
         $adminName = env('ADMIN_NAME');
         $adminEmail = env('ADMIN_EMAIL');
         $adminPassword = env('ADMIN_PASSWORD');
+        $adminRole = Role::where('name', 'admin')->first();
 
         $user = User::create([
             'name' => $adminName,
             'email' => $adminEmail,
             'password' => Hash::make($adminPassword),
+            'email_verified_at' => now(),
+            'role_id'=>$adminRole->id
         ]);
     }
     private function seedDummyUsers(): void
