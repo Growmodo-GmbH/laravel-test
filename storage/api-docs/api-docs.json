@@ -1,0 +1,117 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Test API",
+        "description": "API for test",
+        "version": "3.0.0"
+    },
+    "paths": {
+        "/login": {
+            "post": {
+                "operationId": "42f77e072dec84b0e1094cca1228298e",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Handle an incoming authentication request."
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "post": {
+                "operationId": "03afb12b342c2ea43bdc1de4f39e91a8",
+                "responses": {
+                    "200": {
+                        "description": "Destroy an authenticated session.."
+                    }
+                }
+            }
+        },
+        "/verify-email/{id}/{hash}": {
+            "get": {
+                "operationId": "871ca04d90ecc4ac046afcbfa8d65ac1",
+                "responses": {
+                    "200": {
+                        "description": "Send a new email verification notification."
+                    }
+                }
+            },
+            "post": {
+                "operationId": "3cf766685ea47c494f1b16c8eb501cd6",
+                "responses": {
+                    "200": {
+                        "description": "Handle an incoming registration request."
+                    }
+                }
+            }
+        },
+        "/reset-password": {
+            "post": {
+                "operationId": "24b1c68468bf984b8806908f211f3827",
+                "responses": {
+                    "200": {
+                        "description": "Handle an incoming new password request."
+                    }
+                }
+            }
+        },
+        "/forgot-password": {
+            "post": {
+                "operationId": "888e4aa5b202b170b9fe831da90048c6",
+                "responses": {
+                    "200": {
+                        "description": "Handle an incoming password reset link request."
+                    }
+                }
+            }
+        },
+        "/register": {
+            "post": {
+                "operationId": "573de1fed352c1205a32c4d1b9877375",
+                "responses": {
+                    "200": {
+                        "description": "Handle an incoming registration request."
+                    }
+                }
+            }
+        },
+        "/api": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "An example endpoint"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "operationId": "73e4177671849bfddfd61a56eafa2aff",
+                "responses": {
+                    "200": {
+                        "description": "Endpoint to get all user"
+                    }
+                }
+            }
+        }
+    }
+}
