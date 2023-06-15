@@ -26,9 +26,8 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 // Route::prefix('/users')->group(function () {
 //     Route::get('', [UserController::class, 'all']);
 // });
-// Route::middleware(['auth:sanctum'])->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('/users')->group(function () {
-        Route::get('', [UserController::class, 'all']);
-        // ->middleware(IsAdmin::class);
+        Route::get('', [UserController::class, 'all'])->middleware(IsAdmin::class);
     });
-// });
+});

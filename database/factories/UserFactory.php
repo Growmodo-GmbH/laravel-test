@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Role;
 use App\Models\User;
+use Faker\Provider\PhoneNumber;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -23,6 +24,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'phone'=>PhoneNumber::numerify('##########'),
             'role_id'=>$guestRole->id,
             'email_verified_at' => now(),
             'password' => 'bypass', // password

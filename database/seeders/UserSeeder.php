@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Role;
 use App\Models\User;
+use Faker\Provider\PhoneNumber;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +33,7 @@ class UserSeeder extends Seeder
             'name' => $adminName,
             'email' => $adminEmail,
             'password' => Hash::make($adminPassword),
+            'phone'=>PhoneNumber::numerify('##########'),
             'email_verified_at' => now(),
             'role_id'=>$adminRole->id
         ]);
