@@ -16,8 +16,11 @@ class UserController extends Controller
      */
     public function all()
     {
-        $userList = User::all();
-
+        $userList = User::get()->map(function ($user) {
+            return array_merge($user->toArray(), [
+                'role_name' => $user->roleName(),
+            ]);
+        });
         return response()->json($userList);
     }
 
