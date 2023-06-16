@@ -20,7 +20,7 @@ jobs:
       startsWith(github.ref_name, 'test-') == false
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         token: ${{ secrets.PUSH_TOKEN }}
     - name: Personalize new branch

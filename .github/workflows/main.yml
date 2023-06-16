@@ -17,7 +17,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Environment
       run: |
         npm install dotenv --global
@@ -40,7 +40,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         token: ${{ secrets.PUSH_TOKEN }}
     - name: Set up Node
