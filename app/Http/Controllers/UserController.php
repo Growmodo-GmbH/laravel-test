@@ -10,7 +10,7 @@ class UserController extends Controller
 
     public function all()
     {
-        $userList = User::with('role')->get();
+        $userList = User::with('role')->paginate(16);
         return response()->json($userList);
     }
 
