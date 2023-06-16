@@ -10,13 +10,7 @@ use Illuminate\Http\Request;
 
 class EmailVerificationNotificationController extends Controller
 {
-    /**
-     *
-     * @OA\Get(
-     *     path="/verify-email/{id}/{hash}",
-     *     @OA\Response(response=200, description="Send a new email verification notification.")
-     * )
-     */
+
     public function store(Request $request): JsonResponse|RedirectResponse
     {
         if ($request->user()->hasVerifiedEmail()) {

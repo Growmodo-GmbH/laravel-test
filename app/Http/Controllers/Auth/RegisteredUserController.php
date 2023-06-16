@@ -13,14 +13,7 @@ use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     *
-     * @OA\Post(
-     *     path="/register",
-     *     @OA\Response(response=200, description="Handle an incoming registration request.")
-     * )
-     * @throws \Illuminate\Validation\ValidationException
-     */
+
     public function store(Request $request): Response
     {
         $request->validate([

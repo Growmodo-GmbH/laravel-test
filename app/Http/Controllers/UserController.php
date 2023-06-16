@@ -8,12 +8,6 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
-    /**
-     * @OA\Get(
-     *     path="/api/users",
-     *     @OA\Response(response=200, description="Endpoint to get all user")
-     * )
-     */
     public function all()
     {
         $userList = User::get()->map(function ($user) {
