@@ -15,25 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->tinyInteger('usertype')->comment('0 = admin, 1 = user')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
-
-        DB::table('users')->insert(
-            array(
-                'name' => 'admin',
-                'email' => 'admin@gmail.com',
-                'phone' => '09123456789',
-                'password' => '$2y$10$D7UMeBiSfBB3TtXqADB/xe1cTkP8fezswuz.JifQVvfdjJK4fmHwO', //admin123
-                'usertype' => 0,
-                'created_at' => '2023-06-15 01:47:39',
-                'updated_at' => '2023-06-15 01:47:39'
-            )
-        );
     }
 
     /**
