@@ -23,9 +23,10 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::prefix('/users')->group(function () {
-//     Route::get('', [UserController::class, 'all']);
-// });
+Route::get('/userhaha', function (Request $request) {
+    return $request->user();
+});
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('/users')->group(function () {
         Route::get('', [UserController::class, 'all'])->middleware(IsAdmin::class);
