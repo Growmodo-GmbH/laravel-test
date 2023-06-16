@@ -23,7 +23,7 @@
  - Fork the `main` branch of this repository.
  - Clone the repository you forked on your local machine, <a href="#setup">and setup to work on the branch assigned to you</a>.
  - Update `.env` according to your needs, <code style="color : red">except</code> for the database credentials starting with `DB_*`.
- - Work on the task assigned to you.
+ - You can start working on the task assigned to you
  - When you are ready, make a <a href="#push-and-pull-request-pr">Pull Request</a> to the `same branch` you are working on.
 
 ## Setup
@@ -54,13 +54,14 @@
 
 ## Notes
  - Don not add `.env` to `.gitignore`.
- - Don't update database credentials, all keys starting with `DB_*`.
- - Branches that starts with `deploy-` are auto generated, do not make changes on this branches.
+ - Don't update database credentials; all keys start with `DB_*`.
+ - Branches that start with `deploy-` are auto-generated, do not make changes on these branches.
+ - Our deployment script does not `migrate:fresh` to prevent data loss. Please create a new migration with `php artisan make:migration <new_migration_name>`.
  - _***Important***_: Make sure to work and submit Pull Request (`PR`) only on the branch that is assigned to you.
 
 ## View Deployment
-- When no errors encounter you should be able to see your app at: [https://test.growmodo.dev/\<BRANCH-NAME\>/public/](https://test.growmodo.dev/BRANCH-NAME/public/)
-- Replace `<BRANCH-NAME>` with the name of the branch you are working to view the deployed app.
+- When no errors encounter, you should be able to see your app at: [https://test.growmodo.dev/\<BRANCH-NAME\>/public/](https://test.growmodo.dev/BRANCH-NAME/public/)
+- Replace `<BRANCH-NAME>` with the branch name you are working on to view the deployed app.
 
 ## About Laravel
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling.
