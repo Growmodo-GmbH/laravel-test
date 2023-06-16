@@ -17,8 +17,8 @@ class RegisterController extends Controller
     {
         $validated = $request->validate([
             "name" => ['required', 'min:4'],
-            "email" => ['required', 'email', Rule::unique('users', 'email')],
-            "phone" => ['required','digits:11', Rule::unique('users', 'phone')],
+            "email" => ['required', 'email', Rule::unique('record', 'email')],
+            "phone" => ['required','digits:11', Rule::unique('record', 'phone')],
             "password" => 'required|confirmed|min:6',
         ]);
         $validated['password'] = bcrypt( $validated['password']);
