@@ -1,13 +1,52 @@
 {
     "name": "laravel-trial-ask",
+    "version": "",
+    "private": true,
     "description": "Laravel Trial Task",
     "scripts": {
-        "dev": "vite",
-        "build": "vite build"
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "dev": "vite"
+    },
+    "dependencies": {
+        "core-js": "^3.8.3",
+        "vue": "^3.3.4",
+        "vue-router": "^4.2.2"
     },
     "devDependencies": {
+        "@babel/core": "^7.12.16",
+        "@babel/eslint-parser": "^7.12.16",
+        "@popperjs/core": "^2.11.8",
+        "@vitejs/plugin-vue": "^4.0.3",
         "axios": "^1.1.2",
+        "bootstrap": "^5.1.3",
+        "eslint": "^8.12.0",
+        "eslint-plugin-vue": "^8.7.0",
         "laravel-vite-plugin": "^0.7.2",
+        "sass": "^1.59.0",
         "vite": "^4.0.0"
-    }
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/vue3-essential",
+            "eslint:recommended"
+        ],
+        "parserOptions": {
+            "parser": "@babel/eslint-parser"
+        },
+        "rules": []
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead",
+        "not ie 11"
+    ],
+    "_id": "laravel-trial-ask@",
+    "readme": "ERROR: No README data found!"
 }
