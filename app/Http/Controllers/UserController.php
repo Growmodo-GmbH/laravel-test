@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,9 @@ class UserController extends Controller
 
     public function all()
     {
-        $userList = User::with('role')->paginate(16);
+        $userList = User::with('role')->whereHas('role', function ($query) {
+            $query->where('name', '!=', 'admin');
+        })->paginate(16);
         return response()->json($userList);
     }
     public function update(Request $request, User $user)
