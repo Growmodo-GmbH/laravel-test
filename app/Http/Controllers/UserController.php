@@ -20,13 +20,9 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
-            'phone' => ['required', 'numeric', 'digits:10',  'unique:' . User::class]
         ]);
 
         $user->name = $request->name;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
 
         $user->save();
 
