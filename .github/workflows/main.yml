@@ -1,9 +1,9 @@
 name: Deploy to Test Server
- 
+
 on:
   push:
     branches-ignore: [ main, deploy-*, feature-*, patch-*, fix-*, revert-*, test-* ]
-    
+
 env:
   BRANCH_NAME: ${{ github.ref_name }}
   REPO_NAME: ${{ github.event.repository.name }}
@@ -12,7 +12,7 @@ env:
   DEPLOY_HOST: "${{ secrets.LARAVEL_TEST_HOST }}/${{ github.ref_name }}/public"
   EVENT_NAME: ${{ github.event_name }}
   DB_DEFAULT: "laravel-test"
-  
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -35,7 +35,7 @@ jobs:
         else
           echo "DB_DATABASE is configured: ${{ env.DB_DATABASE }}"
         fi
-        
+
   deploy:
     needs: test
     runs-on: ubuntu-latest
@@ -47,8 +47,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '16.x'
-    - run: npm install
-    - run: npm run build
     - name: Updating APP_URL
       run: |
         export host_string=$(printf '%s\n' "${{ env.DEPLOY_HOST }}" | sed 's:/:\\&:g')
