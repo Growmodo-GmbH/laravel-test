@@ -54,9 +54,11 @@ jobs:
         yarn install --frozen-lockfile
         yarn build
         elif [ -e package-lock.json ]; then
+        composer install
         npm ci
         npm run build
         elif [ -e package.json ]; then
+        composer install
         npm i
         npm run build
         else
