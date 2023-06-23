@@ -5,70 +5,42 @@
 </p>
 
 # <p align="center">Laravel Test</p>
-<p align="center">
-    A <a href="https://www.growmodo.com" target="_blank">Growmodo</a>'s trial task for laravel developers.
-</p>
 
 <p align="center">
-    Join a fast-growing team of rockstar creatives and code wizards who are passionate about making customers say “WOW”. If you believe you have what it takes and want to grow your career instead of just finding another job - you are at the right place!
+    Submission for <a href="https://www.growmodo.com" target="_blank">Growmodo</a>'s trial task for laravel developers.
 </p>
 
-<p align="center">
-    <a href="https://www.growmodo.com/application" target="_blank">
-        <img src="https://img.shields.io/badge/Apply Now-blue" alt="Apply Now"/>
-    </a>
-</p>
+## Setting Up the project
 
-## Instructions
- - Fork the `main` branch of this repository.
- - Clone the repository you forked on your local machine, <a href="#setup">and setup to work on the branch assigned to you</a>.
- - Update `.env` according to your needs, <code style="color : red">except</code> for the database credentials starting with `DB_*`.
- - You can start working on the task assigned to you
- - When you are ready, make a <a href="#push-and-pull-request-pr">Pull Request</a> to the `same branch` you are working on.
+-   Copy .env.local to .env
+-   Install all the dependencies using composer
 
-## Setup
- - Getting the specific branch assigned to you. Example branch: `john-laravel-test`
- - NOTE: Replace `john-laravel-test` with the branch name assigned to you
- 
- - First, add this repo as new remote
- ```bash
- git remote add growmodo https://github.com/Growmodo-GmbH/laravel-test
- ```
- - Pull the branch from the remote repository
- ```bash
- git pull growmodo john-laravel-test
- ```
- - Make a local checkout of your branch
- ```bash
- git checkout -b john-laravel-test growmodo/john-laravel-test
- ```
- - Then start working on the task assigned to you.
+```bash
+composer install
+```
 
-## Push and Pull Request (`PR`)
- - Push changes to the specific branch assigned to you. Example branch: `john-laravel-test`
- - NOTE: Replace `john-laravel-test` with the branch name assigned to you
- ```bash
- git push origin john-laravel-test
- ```
- - Then make a pull request from the branch you are working to the same branch on growmodo repository
+-   initialize the database
 
-## Notes
- - Don not add `.env` to `.gitignore`.
- - Don't update database credentials; all keys start with `DB_*`.
- - Branches that start with `deploy-` are auto-generated, do not make changes on these branches.
- - Our deployment script does not `migrate:fresh` to prevent data loss. Please create a new migration with `php artisan make:migration <new_migration_name>`.
- - _***Important***_: Make sure to work and submit Pull Request (`PR`) only on the branch that is assigned to you.
+```bash
+php artisan db:seed
+```
 
-## View Deployment
-- When no errors encounter, you should be able to see your app at: [https://test.growmodo.dev/\<BRANCH-NAME\>/public/](https://test.growmodo.dev/BRANCH-NAME/public/)
-- Replace `<BRANCH-NAME>` with the branch name you are working on to view the deployed app.
+-   Run this to seed admin
 
-## About Laravel
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling.
+```bash
+php artisan db:seed
+```
 
-## Learning Laravel
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   Generate a new application key
 
-#
+```bash
+php artisan key:generate
+```
+
+-   Start the local development server
+
+```bash
+php artisan serve
+```
 
 &copy; [Growmodo, GmbH](https://growmodo.com)
