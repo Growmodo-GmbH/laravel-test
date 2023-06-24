@@ -13,18 +13,48 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Artisan::call('migrate', [
-            '--path' => 'database/migrations/2014_10_12_000000_create_users_table.php',
-        ]);
-        Artisan::call('migrate', [
-            '--path' => 'database/migrations/2014_10_12_100000_create_password_reset_tokens_table.php',
-        ]);
-        Artisan::call('migrate', [
-            '--path' => 'database/migrations/2019_08_19_000000_create_failed_jobs_table.php',
-        ]);
-        Artisan::call('migrate', [
-            '--path' => 'database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php',
-        ]);
+        Schema::dropIfExists('users');
+        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('personal_access_tokens');
+
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('username')->unique();
+            $table->string('email')->unique();
+            $table->string('phone_number');
+            $table->string('password');
+            $table->string('user_type')->default('User');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+
+        Schema::create('password_reset_tokens', function (Blueprint $table) {
+            $table->string('email')->primary();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
+        });
+
+        Schema::create('failed_jobs', function (Blueprint $table) {
+            $table->id();
+            $table->string('uuid')->unique();
+            $table->text('connection');
+            $table->text('queue');
+            $table->longText('payload');
+            $table->longText('exception');
+            $table->timestamp('failed_at')->useCurrent();
+        });
+
+        Schema::create('personal_access_tokens', function (Blueprint $table) {
+            $table->id();
+            $table->morphs('tokenable');
+            $table->string('name');
+            $table->string('token', 64)->unique();
+            $table->text('abilities')->nullable();
+            $table->timestamp('last_used_at')->nullable();
+            $table->timestamp('expires_at')->nullable();
+            $table->timestamps();
+        });
 
         Artisan::call('db:seed', [
             '--class' => 'UserSeeder',
