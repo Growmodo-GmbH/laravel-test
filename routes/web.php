@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +18,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 });
+
+// Route::resource('users', UserController::class);
+Route::get('/users', [UserController::class, 'index']);
+
+Auth::routes();
+
+Route::get('/{any}', function () {
+    return view('layouts.app');
+})->where('any', '.*');
