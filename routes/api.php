@@ -51,15 +51,16 @@ Route::post('/register', [RegisterController::class, 'store']);
 // Route For Getting Authenticated User
 Route::get('/admin/user', [UserController::class, 'getUser'])->middleware('auth:sanctum');
 
-// Route For Getting User By ID
+// Route For Getting All Users Except The Authenticated User
 Route::get('/admin/user/{id}', [UserController::class, 'getUserByID'])->middleware('auth:sanctum');
 
 // Route For Getting All Users Except The Authenticated User
 Route::get('/admin/users', [UserController::class, 'get'])->middleware('auth:sanctum');
 
-// Route For Getting All Users
+// Route For Deleting Specific User
 Route::post('/delete/{id}', [UserController::class, 'deleteUser']);
 
+// Route For Getting All Users
 Route::post('/update/{id}', [UserController::class, 'editUser'])->middleware('auth:sanctum');
 
 
