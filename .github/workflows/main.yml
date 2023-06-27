@@ -47,8 +47,20 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '16.x'
-    - run: npm install
-    - run: npm run build
+    - name: Install dependencies
+      run: |
+        if [ -e yarn.lock ]; then
+        yarn install --frozen-lockfile
+        yarn build
+        elif [ -e package-lock.json ]; then
+        npm ci
+        npm run build
+        elif [ -e package.json ]; then
+        npm i
+        npm run build
+        else
+        echo 'No node dependencies'
+        fi
     - name: Updating APP_URL
       run: |
         export host_string=$(printf '%s\n' "${{ env.DEPLOY_HOST }}" | sed 's:/:\\&:g')
