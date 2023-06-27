@@ -41,20 +41,12 @@ class UserController extends Controller
         return response()->json(['status' => 403, 'message' => "403 Forbidden"]);
     }
 
-    // Function for getting a single user/authenticated user
-    public function getUserById($id) {
+    public function getUserByID ($id) {
+        $user = User::find($id);
 
-        // Get authenticated user
-        $user = User::findOrFail($id);
-
-        // Check if user is authenticated
         if ($user) {
-
             // Response with status and user details
             return response()->json(['status' => 200, 'user' => $user]);
-        } else {
-            // Response with status and message
-            return response()->json(['status' => 401, 'message' => "401 Unauthorized"]);
         }
 
         // Response with status and message
@@ -78,14 +70,14 @@ class UserController extends Controller
     }
 
     public function editUser(Request $request, $id) {
+        $input = $request->all();
 
         $user = User::find($id);
 
         if ($user) {
-            $user->Update($request->all());
+            $user->update($request->all());
 
-            return response()->json(['status' => 200, 'message' => 'User has been update!',]);
-
+            return response()->json(['status' => 200, 'message' => 'User has been updated!', 'user' => $user]);
         }
 
         return response()->json(['status' => 404, 'message' => 'User not found!']);
