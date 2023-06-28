@@ -16,18 +16,21 @@
           </span>
         </span>
         
+        <!-- Username -->
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
             Username
           </label>
           <input v-model="user.username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
         </div>
+        <!-- Email Address -->
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
             Email Address
           </label>
           <input v-model="user.email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="johndoe@email.com">
         </div>
+        <!-- Phone Number -->
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="phone_number">
             Phone Number
@@ -35,12 +38,14 @@
           <input v-model="user.phone_number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone_number" type="tel" placeholder="0912-345-6789">
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
+          <!-- Password -->
           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
               Password
             </label>
             <input v-model="user.password" class="shadow appearance-none borderrounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
           </div>
+          <!-- Confirm Password -->
           <div class="w-full md:w-1/2 px-3">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm_password">
               Confirm Password

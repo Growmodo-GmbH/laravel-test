@@ -26,18 +26,21 @@
                         </span>
                     </span>
             
+                    <!-- Username -->
                     <div class="mb-4">
                       <label class="block text-blue-800 text-sm font-bold mb-2" for="username">
                         Username
                       </label>
                       <input v-model="editedUser.username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
                     </div>
+                    <!-- Email Address -->
                     <div class="mb-4">
                         <label class="block text-blue-800 text-sm font-bold mb-2" for="email">
                           Email Address
                         </label>
                         <input v-model="editedUser.email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email Address">
                     </div>
+                    <!-- Phone Number -->
                     <div class="mb-6">
                         <label class="block text-blue-800 text-sm font-bold mb-2" for="phone_number">
                           Phone Number
