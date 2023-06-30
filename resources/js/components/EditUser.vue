@@ -35,10 +35,6 @@
 </template>
 
 <script>
-// import Vue from 'vue'
-// import axios from 'axios'
-// Vue.use(axios)
-
 export default {
     name: 'EditUser',
     data() {
@@ -56,7 +52,7 @@ export default {
     methods: {
         getUserByID() {
             this.response = false
-            axios.get('http://127.0.0.1:8000/api/admin/user/' + this.userID)
+            axios.get('/api/admin/user/' + this.userID)
                 .then(
                     response => {
                         this.result = response.data.user
@@ -71,7 +67,7 @@ export default {
                 )
         },
         saveData() {
-            axios.post('http://127.0.0.1:8000/api/update/' + this.userID, this.result)
+            axios.post('/api/update/' + this.userID, this.result)
                 .then(
                     ({ data }) => {
                         console.log(data)

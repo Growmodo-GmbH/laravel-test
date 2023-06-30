@@ -41,11 +41,6 @@
 </template>
 
 <script>
-// import Vue from 'vue'
-// import axios from 'axios'
-
-// Vue.use(axios)
-
 export default {
   name: 'Users',
   data () {
@@ -66,7 +61,7 @@ export default {
   },
   methods: {
     LoadUsers: function () {
-      axios.get('http://127.0.0.1:8000/api/admin/users')
+      axios.get('/api/admin/users')
         .then(
           response => {
             console.log(response)
@@ -83,7 +78,7 @@ export default {
         )
     },
     handleLogout () {
-      axios.post('http://127.0.0.1:8000/api/logout', this.token)
+      axios.post('/api/logout', this.token)
         .then(
           response => {
             console.log(response)
@@ -97,7 +92,7 @@ export default {
       this.$router.push({ name: 'EditUser' })
     },
     handleDelete (ID) {
-       axios.post('http://127.0.0.1:8000/api/delete/' + ID)
+       axios.post('/api/delete/' + ID)
         .then(
           response => {
             alert('User successfully deleted!')

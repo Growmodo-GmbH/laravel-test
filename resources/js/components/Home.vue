@@ -23,10 +23,6 @@
 </template>
 
 <script>
-// import Vue from 'vue'
-// import axios from 'axios'
-
-// Vue.use(axios)
 export default {
   name: 'Home',
   data () {
@@ -38,7 +34,7 @@ export default {
   methods: {
     getUser () {
       this.response = false
-      axios.get('http://127.0.0.1:8000/api/admin/user')
+      axios.get('/api/admin/user')
         .then(
           response => {
             this.result = response.data
@@ -54,7 +50,7 @@ export default {
         )
     },
     handleLogout () {
-      axios.post('http://127.0.0.1:8000/api/logout', this.token)
+      axios.post('/api/logout', this.token)
         .then(
           response => {
             console.log(response)
@@ -64,7 +60,7 @@ export default {
         )
     },
     handleUnsubscribe (ID) {
-      axios.post('http://127.0.0.1:8000/api/delete/' + ID)
+      axios.post('api/delete/' + ID)
         .then(
           response => {
             console.log(response)

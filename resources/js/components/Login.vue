@@ -44,7 +44,7 @@ export default {
     },
     methods: {
         LoginData() {
-            axios.post('http://127.0.0.1:8000/api/login', this.user)
+            axios.post('/api/login', this.user)
                 .then(
                     ({ data }) => {
                         console.log(data)
