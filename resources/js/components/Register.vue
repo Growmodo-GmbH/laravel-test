@@ -45,10 +45,6 @@
 </template>
 
 <script>
-// import Vue from 'vue'
-// import axios from 'axios'
-// Vue.use(axios)
-
 export default {
   name: 'Register',
   data () {
@@ -71,7 +67,7 @@ export default {
         this.errorMessage = 'Password and Confirm Password do not match!'
         return false
       } else {
-        axios.post('http://127.0.0.1:8000/api/register', this.user)
+        axios.post('/api/register', this.user)
           .then(
             ({ data }) => {
               console.log(data)
@@ -88,14 +84,6 @@ export default {
 
                 return false
               }
-              // try {
-              //   this.$router.push({ name: 'Login' })
-              //   this.errorMessage = ''
-              //   return true
-              // } catch (err) {
-              //   this.errorMessage = data.message
-              //   return false
-              // }
             }
           )
       }
