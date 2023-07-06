@@ -16,19 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->group(function() {
-//     Route::post('/logout', [AuthController::class, 'logout']);
-// });
-
-Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout']);
+Route::post('/register', [AuthController::class, 'register']);
 
+// Protected routes
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', [AuthController::class, 'getUser']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 
-// Route::group(['middleware' => 'auth:api'], function () {
-//     Route::get('/home', [UserController::class, 'show']);
-// });
-
-Route::get('/user', [UserController::class, 'show']);
-Route::put('/edit/{user}', [UserController::class, 'edit']);
-Route::delete('/delete/{user}', [UserController::class, 'delete']);
+    Route::get('/show', [UserController::class, 'show']);
+    Route::put('/edit/{user}', [UserController::class, 'edit']);
+    Route::delete('/delete/{user}', [UserController::class, 'delete']);
+});

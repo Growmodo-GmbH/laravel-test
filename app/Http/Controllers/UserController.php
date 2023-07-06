@@ -5,25 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
     public function show(){
-
         $users = User::all();
 
-        // Format the created_at field of each user
-        foreach ($users as $user) {
-            $user->formatted_created_at = Carbon::parse($user->created_at)->timezone('Asia/Manila')->format('Y-m-d h:i A');
-        }
-
-        return response()->json(['users' => $users]);
+        return $users;
     }
 
     public function edit(Request $request, User $user){
-        $request->validate([
+        $data = Validator::make($request->all(), [
             'username' => [
                 'required',
                 'string',
@@ -45,14 +39,31 @@ class UserController extends Controller
             'phone_number' => 'required',
         ]);
 
-        $user->update($request->only(['username', 'email', 'phone_number']));
+        if ($data->fails()) {
+            $success = false;
+            $message = $data->errors();
+        }else{
+            $user->update($request->only(['username', 'email', 'phone_number']));
+            $success = true;
+            $message = "User updated successfully";
+        }
 
-        return response()->json(['message' => 'User updated successfully']);
+        $response = [
+            'success' => $success,
+            'message' => $message
+        ];
+
+        return response()->json($response);
     }
 
     public function delete(User $user){
-        // $user->delete();
+        $user->delete();
         
-        return response()->json(['message' => 'User deleted successfully']);
+        $response = [
+            'success' => true,
+            'message' => "User deleted successfully"
+        ];
+
+        return response()->json($response);
     }
 }
