@@ -1,0 +1,23 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// Pages
+@import 'pages/ViewRecordsPage';
+@import 'pages/WelcomePage';
+@import 'pages/HomePage';
+
+body {
+    background: linear-gradient(to top right, #a85bc0, #555cc9);
+    background-repeat: no-repeat;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 45px;
+}
