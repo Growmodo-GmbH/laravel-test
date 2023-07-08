@@ -32,7 +32,7 @@
 
 
 <script>
-import { toast } from '../../../utils';
+import {toast} from '../../../utils';
 
 export default {
     data() {

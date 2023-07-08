@@ -28,7 +28,8 @@
                                     <span class="me-1 svg-green" @click="editUser(user)">
                                         <i data-feather="edit"></i>
                                     </span>
-                                    <span :class="{ invisible: isUserAdmin(user) }" class="svg-red" @click="deleteUser(user)">
+                                    <span :class="{ invisible: isUserAdmin(user) }" class="svg-red"
+                                          @click="deleteUser(user)">
                                         <i data-feather="trash-2"></i>
                                     </span>
                                 </span>

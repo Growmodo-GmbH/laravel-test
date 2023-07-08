@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { api, toast } from '../../../utils';
+import {api, toast} from '../../../utils';
 import store from '../../store';
 
 export default {
@@ -31,7 +31,7 @@ export default {
     methods: {
         // Navigate to the ViewRecords page
         viewRecords() {
-            this.$router.push({ name: 'ViewRecords' });
+            this.$router.push({name: 'ViewRecords'});
         },
         // Unsubscribe the user
         unsubscribe() {
@@ -40,7 +40,7 @@ export default {
                 .then(response => {
                     localStorage.removeItem('access_token'); // Remove the access token from local storage
                     this.$store.commit('setUser', null); // Remove the user from the store
-                    this.$router.push({ name: 'Home' }); // Navigate to the Home page
+                    this.$router.push({name: 'Home'}); // Navigate to the Home page
                     toast(response.data.message, 'success'); // Show a success toast
                 })
                 .finally(() => {
@@ -54,7 +54,7 @@ export default {
                 .then(() => {
                     localStorage.removeItem('access_token'); // Remove the access token from local storage
                     this.$store.commit('setUser', null); // Remove the user from the store
-                    this.$router.push({ name: 'Home' }); // Navigate to the Home page
+                    this.$router.push({name: 'Home'}); // Navigate to the Home page
                 })
                 .finally(() => {
                     this.$store.commit('toggleLoading');

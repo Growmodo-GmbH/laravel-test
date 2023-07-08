@@ -18,7 +18,7 @@
 // Import components and utilities
 import LoginForm from '../forms/LoginForm.vue';
 import RegisterForm from '../forms/RegisterForm.vue';
-import { api, toast } from '../../../utils';
+import {api, toast} from '../../../utils';
 
 export default {
     components: {
@@ -43,7 +43,7 @@ export default {
                     localStorage.setItem('access_token', response.data.access_token);
 
                     this.$store.commit('setUser', response.data.user);
-                    this.$router.push({ name: 'Welcome' });
+                    this.$router.push({name: 'Welcome'});
                 })
                 .catch(error => {
                     if (error.response && error.response.status === 401) {
@@ -67,7 +67,7 @@ export default {
                     localStorage.setItem('access_token', response.data.access_token);
 
                     this.$store.commit('setUser', response.data.user);
-                    this.$router.push({ name: 'Welcome' });
+                    this.$router.push({name: 'Welcome'});
                 })
                 .catch(error => {
                     if (error.response && error.response.status === 422) {
