@@ -1,0 +1,105 @@
+.hp-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 15px;
+    flex-direction: column;
+    color: #fff;
+
+    h2 {
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    .divider {
+        position: relative;
+        width: 171px;
+        text-align: center;
+
+        span {
+            position: absolute;
+            top: 5px;
+            left: 67px;
+            background-color: #8b5dc5;
+            padding: 0 6px;
+            border-radius: 100px;
+        }
+    }
+
+    .toggle-button {
+        font-size: 17px;
+        cursor: pointer;
+        transition: .5s;
+
+        &:hover {
+            color: #dcb9ff;
+        }
+    }
+
+    .form-container {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+
+        form {
+            h2 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .input-group {
+                position: relative;
+                margin-bottom: 25px;
+
+                span {
+                    color: #b90b0b;
+                    font-size: 14px;
+                }
+
+                label {
+                    position: absolute;
+                    top: 10px;
+                    left: 0;
+                    font-size: 16px;
+                    font-weight: 200;
+                    color: #fff;
+                    transition: 0.3s ease;
+                }
+
+                input {
+                    display: block;
+                    width: 100%;
+                    background: transparent;
+                    border: none;
+                    border-bottom: 2px solid #fff;
+                    padding: 10px 0;
+                    color: #fff;
+                    &:focus {
+                        outline: none;
+                        border-bottom-color: #007bff;
+                    }
+                    &:focus + label,
+                    &:not(:placeholder-shown) + label {
+                        top: -15px;
+                        font-size: 12px;
+                        color: #ffffff94;
+                    }
+                }
+            }
+
+            button {
+                width: 100%;
+                padding: 10px;
+                border: none;
+                background-color: #4b4fa9;
+                color: #fff;
+                cursor: pointer;
+                transition: 0.5s;
+                &:hover {
+                    background-color: #595ebd;
+                }
+            }
+        }
+    }
+}

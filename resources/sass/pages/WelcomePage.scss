@@ -1,0 +1,32 @@
+.wp-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 15px;
+    flex-direction: column;
+
+    h1 {
+        font-weight: 300;
+        color: #fff;
+        font-size: 60px;
+        text-align: center;
+    }
+
+    button {
+        background: transparent;
+        border-color: white;
+        font-size: 24px;
+        padding: 5px 35px;
+        transition: .5s;
+        font-weight: 200;
+        min-width: 230px;
+        margin: 5px;
+
+        &:hover, &:focus, &:active {
+            background-color: #ffffff1c !important;
+            border-color: #fff !important;
+            box-shadow: unset !important;
+        }
+    }
+}

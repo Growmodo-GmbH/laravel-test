@@ -22,8 +22,8 @@ auth.json
 npm-debug.log
 yarn-error.log
 
-.env
+.composer
+.npm
 Dockerfile
 docker-compose.yml
 nginx
-.composer
