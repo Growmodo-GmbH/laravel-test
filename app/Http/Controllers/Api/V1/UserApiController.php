@@ -18,7 +18,7 @@ class UserApiController extends Controller
      */
     public function index()
     {
-        return new UserApiCollection(User::paginate());
+        return new UserApiCollection(User::all());
     }
 
     /**

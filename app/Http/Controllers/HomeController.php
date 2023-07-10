@@ -25,4 +25,24 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    /**
+     * Show the User Records Table.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function showRecords()
+    {
+        return view('records');
+    }
+
+    /**
+     * Show the Unsubscribe page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function unsub()
+    {
+        return view('unsubscribe');
+    }
 }
