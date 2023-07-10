@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+Route::get('/test', function(){
+    return "hello world";
+});
+
 Route::group(['prefix' => 'un_auth'], function(){
     Route::post('/register', [App\Http\Controllers\Authentication\AuthenticationController::class, 'register']);
     Route::post('/login', [App\Http\Controllers\Authentication\AuthenticationController::class, 'login']);
