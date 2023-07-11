@@ -9,7 +9,15 @@ import 'bootstrap';
 import axios from 'axios';
 window.axios = axios;
 
+let g_token;
+let token;
+if(JSON.parse(localStorage.getItem('vuex'))){
+    g_token = JSON.parse(localStorage.getItem('vuex'))
+    token = g_token.auth.token
+}
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.withCredentials = true
+token ? window.axios.defaults.headers.Authorization = 'Bearer ' + token : null
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
