@@ -62,22 +62,22 @@
                         title: "Phone Number",
                         key: "phone_number"
                     },
-                    {
-                        title: "Action",
-                        key: "actions",
-                        render(row) {
-                            return h(
-                                NButton,
-                                {
-                                    strong: true,
-                                    tertiary: true,
-                                    size: "small",
-                                    onClick: () => this.edit(row)
-                                },
-                                { default: () => "Edit" }
-                            );
-                        }
-                    }
+                    // {
+                    //     title: "Action",
+                    //     key: "actions",
+                    //     render(row) {
+                    //         return h(
+                    //             NButton,
+                    //             {
+                    //                 strong: true,
+                    //                 tertiary: true,
+                    //                 size: "small",
+                    //                 onClick: () => this.edit(row)
+                    //             },
+                    //             { default: () => "Edit" }
+                    //         );
+                    //     }
+                    // }
                 ],
             }
         },
@@ -102,9 +102,9 @@
                 this.$store.dispatch('auth/set_clear')
                 this.$router.push({name: 'login'})
             },
-            edit(data){
-                console.log(data)
-            }
+            // edit(data){
+            //     console.log(data)
+            // }
         }
     }
 </script>
