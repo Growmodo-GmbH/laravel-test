@@ -6,13 +6,17 @@ export default {
         user_data: {},
         token: "",
         authenticated: false,
-        users: []
+        users: [],
+        to_edit_data: {},
+        to_edit_status: false
     },
     getters: {
         get_user_data : (state) => state.user_data,
         get_token : (state) => state.token,
         get_authenticated : (state) => state.authenticated,
-        get_users : (state) => state.users
+        get_users : (state) => state.users,
+        get_to_edit_data : (state) => state.to_edit_data,
+        get_to_edit_status : (state) => state.to_edit_status
     },
     mutations: {
         set_user_data(state, payload){
@@ -32,6 +36,14 @@ export default {
             state.token = ""
             state.authenticated = false
             state.users = []
+            state.to_edit_data = {}
+            state.to_edit_status = false
+        },
+        set_to_edit_data(state, payload){
+            state.to_edit_data = payload
+        },
+        set_to_edit_status(state, payload){
+            state.to_edit_status = payload
         }
     },
     actions: {
@@ -55,6 +67,15 @@ export default {
         },
         async remove_user({_}, payload){
             await axios.delete(`/api/user/delete_record/${payload.id}`)
+        },
+        set_to_edit_data({commit}, payload){
+            commit('set_to_edit_data', payload)
+        },
+        set_to_edit_status({commit}, payload){
+            commit('set_to_edit_status', payload)
+        },
+        async edit_user_data({_}, payload){
+            await axios.patch(`/api/user/update_user_record/${payload.id}`, payload)
         }
     }
 }
