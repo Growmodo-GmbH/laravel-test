@@ -1,0 +1,50 @@
+{
+  "__plugin-vue_export-helper-4223acdd.js": {
+    "file": "assets/_plugin-vue_export-helper-4223acdd.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/app.js": {
+    "dynamicImports": [
+      "resources/js/components/auth/LoginComponent.vue",
+      "resources/js/components/auth/RegisterComponent.vue",
+      "resources/js/components/Dashboard/DashboardComponent.vue"
+    ],
+    "file": "assets/app-b7c28bf4.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/js/components/Dashboard/DashboardComponent.vue": {
+    "file": "assets/DashboardComponent-7160f542.js",
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-4223acdd.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/components/Dashboard/DashboardComponent.vue"
+  },
+  "resources/js/components/auth/LoginComponent.vue": {
+    "file": "assets/LoginComponent-2e192aa8.js",
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-4223acdd.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/components/auth/LoginComponent.vue"
+  },
+  "resources/js/components/auth/RegisterComponent.vue": {
+    "file": "assets/RegisterComponent-44f8bd1f.js",
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-4223acdd.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/components/auth/RegisterComponent.vue"
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app-298ba296.css",
+    "isEntry": true,
+    "src": "resources/sass/app.scss"
+  }
+}
