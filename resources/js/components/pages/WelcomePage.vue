@@ -39,6 +39,7 @@ export default {
             api.unsubscribe()
                 .then(response => {
                     localStorage.removeItem('access_token'); // Remove the access token from local storage
+                    localStorage.removeItem('user'); // Remove the user from local storage
                     this.$store.commit('setUser', null); // Remove the user from the store
                     this.$router.push({name: 'Home'}); // Navigate to the Home page
                     toast(response.data.message, 'success'); // Show a success toast
@@ -53,6 +54,7 @@ export default {
             api.logout()
                 .then(() => {
                     localStorage.removeItem('access_token'); // Remove the access token from local storage
+                    localStorage.removeItem('user'); // Remove the user from local storage
                     this.$store.commit('setUser', null); // Remove the user from the store
                     this.$router.push({name: 'Home'}); // Navigate to the Home page
                 })
