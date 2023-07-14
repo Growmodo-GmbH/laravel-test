@@ -29,8 +29,9 @@ const routes = [
     }
 ];
 
+const appUrl = new URL(import.meta.env.VITE_APP_URL);
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory(appUrl.pathname),
     routes
 });
 
