@@ -15,7 +15,7 @@ const routes = [
         path: '/view-records',
         name: 'ViewRecords',
         component: ViewRecordsPage,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: true, requiresAdmin: true }
     },
     {
         path: '/welcome',
@@ -29,17 +29,33 @@ const routes = [
     }
 ];
 
+const appUrl = new URL(import.meta.env.VITE_APP_URL);
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory(appUrl.pathname),
     routes
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
+    // if user is not authenticated, check the auth state
+    if (!store.getters.isAuthenticated) {
+        await store.dispatch('checkAuth');
+    }
+    // if user tries to access any route that requires authentication and they are not authenticated, they will be redirected to Home
     if (to.matched.some(record => record.meta.requiresAuth) && !store.getters.isAuthenticated) {
         next({ name: 'Home' });
-    } else {
+    }
+    // if an authenticated user (not admin) tries to access a route that requires admin, they will be redirected to Welcome
+    else if (to.matched.some(record => record.meta.requiresAuth && record.meta.requiresAdmin) && (!store.getters.isAdmin)) {
+        next({ name: 'Welcome' });
+    }
+    // if an authenticated user tries to access the Home page, they will be redirected to Welcome
+    else if (to.name === 'Home' && store.getters.isAuthenticated) {
+        next({ name: 'Welcome' });
+    }
+    else {
         next();
     }
 });
+
 
 export default router;

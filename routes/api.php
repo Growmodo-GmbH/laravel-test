@@ -11,8 +11,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('profile', [UserController::class, 'profile']);
     Route::get('users', [UserController::class, 'index']);
     Route::get('users/{user}', [UserController::class, 'show']);
-    Route::patch('users/{user}', [UserController::class, 'update']);
-    Route::delete('users/{user}', [UserController::class, 'destroy']);
     Route::post('unsubscribe', [UserController::class, 'unsubscribe']);
     Route::post('logout', [AuthController::class, 'logout']);
+
+    Route::middleware('admin')->group(function () {
+        Route::patch('users/{user}', [UserController::class, 'update']);
+        Route::delete('users/{user}', [UserController::class, 'destroy']);
+    });
 });
