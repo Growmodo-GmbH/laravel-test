@@ -147,11 +147,12 @@ export default {
             commit('SET_AUTHENTICATION', true);
           } else {
             commit('LOGOUT');
+            router.push({ name: 'home' });
           }
         })
         .catch((err) => {
           commit('LOGOUT');
-          throw err.response;
+          router.push({ name: 'home' });
         });
     },
     async getUserByToken({ commit, dispatch }, payload) {
