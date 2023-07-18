@@ -45,6 +45,7 @@ class UsersController extends Controller
             'email' => 'required|email|unique:users,email,'.$user->id,
             'name' => 'required|unique:users,name,'.$user->id,
             'password'  => 'min:6|max:255|confirmed',
+            'phone_number'  => 'integer',
         ]);
 
         $validated = $request->validated();

@@ -117,7 +117,7 @@ export default {
       await axios
         .delete(`/api/users/delete/user/${value.id}`)
         .then(({ data }) => {
-          this.users = this.users.filter((u) => u.id != data.id);
+          this.getUsers();
           this.popToast({
             message: 'Successfully Deleted!',
             timer: 5000,

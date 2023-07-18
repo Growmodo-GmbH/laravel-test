@@ -117,6 +117,15 @@ export default {
       });
       if (res.status != 200) throw res;
       dispatch('getUser');
+      dispatch(
+        'toast/popToast',
+        {
+          message: 'User successfully ' + action,
+          timer: 5000,
+          icon: 'success',
+        },
+        { root: true },
+      );
       return res;
     },
     async logout({ commit }) {

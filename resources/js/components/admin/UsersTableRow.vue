@@ -159,12 +159,6 @@ export default {
         .then((result) => {
           if (result.isConfirmed) {
             this.$emit('deleteUser', this.user);
-          } else if (result.isDenied) {
-            self.popToast({
-              message: 'Cancelled',
-              timer: 2000,
-              icon: 'error',
-            });
           }
         });
     },
