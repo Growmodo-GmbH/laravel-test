@@ -1,23 +1,33 @@
 <template>
     <div class="container text-center">
-        <div class="row">
-            <div class="col-md-12">
-                <!-- <img class="logo" src="../assets/images.png"> -->
-                <br />
-            </div>
-            <div class="col-md-12" style="padding-top: 25px;" v-if="result">
-                <h1>Welcome, {{ result.user.username }}</h1>
-                <br />
-                <div v-if="result.user.username == 'admin'">
-                    <button @click="$router.push('/admin/users')" type="button" class="btn btn-success">View
-                        Records</button>
-                    <button @click.prevent="handleLogout" type="button" class="btn btn-danger">Log Out</button>
-                </div>
 
-                <div v-else>
-                    <button @click.prevent="handleUnsubscribe(result.user.id)" type="button"
-                        class="btn btn-secondary">Unsubscribe</button>
-                    <button @click.prevent="handleLogout" type="button" class="btn btn-danger">Log Out</button>
+        <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <div class="card" style="width: 70%;">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12" v-if="result">
+                            <h1>Welcome, {{ result.user.username }}</h1>
+                            <br />
+                            <div v-if="result.user.usertype == 1">
+                                <button @click="$router.push('/admin/users')" type="button" class="btn btn-primary">View
+                                    Records</button> |
+                                <button @click.prevent="handleLogout" type="button" class="btn btn-danger"><span
+                                        class="fas fas-sign-out"></span> Log Out</button>
+                            </div>
+                            <div v-else>
+                                <button @click.prevent="handleUnsubscribe(result.user.id)" type="button"
+                                    class="btn btn-warning">Unsubscribe</button> |
+                                <button @click.prevent="handleLogout" type="button" class="btn btn-danger">Log
+                                    Out</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 50px;">
+            <div class="col-sm-8 offset-sm-2">
+                <div class="card">
                 </div>
             </div>
         </div>
@@ -55,7 +65,6 @@ export default {
             axios.post('/api/logout', this.token)
                 .then(
                     response => {
-                        console.log(response)
                         localStorage.removeItem('token')
                         this.$router.push({ name: 'Login' })
                     }
@@ -65,7 +74,6 @@ export default {
             axios.post('api/delete/' + ID)
                 .then(
                     response => {
-                        console.log(response)
                         localStorage.removeItem('token')
                         this.$router.push({ name: 'Login' })
                     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -44,7 +45,10 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if ($user) {
-            $user->update($request->all());
+            $user->contact = $request->contact;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->update();
             return response()->json(['status' => 200, 'message' => 'User has been updated!', 'user' => $user], 200);
         }
 

@@ -9,15 +9,15 @@
                             <h3 class="mb-5">Sign in</h3>
                             <form @submit.prevent="LoginData">
                                 <div class="form-outline mb-4">
-                                    <input type="text" v-model="user.username" name="username" id="username"
-                                        placeholder="Email / Username" required class="form-control form-control-lg" />
+                                    <input type="text" class="form-control form-control-lg" v-model="user.username"
+                                        name="username" id="username" placeholder="Email / Username" required />
                                 </div>
                                 <div class="form-outline mb-4">
-                                    <input type="password" v-model="user.password" name="password" id="password"
-                                        placeholder="Enter your password" required class="form-control form-control-lg" />
+                                    <input type="password" class="form-control form-control-lg" v-model="user.password"
+                                        name="password" id="password" placeholder="Enter your password" required />
                                 </div>
                                 <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button><br>
-                                <span class="error">{{ errormsg }}</span>
+                                <label class="error">{{ errormsg }}</label>
                             </form>
                             <hr class="my-3">
 
@@ -58,7 +58,7 @@ export default {
                                 this.errormsg = data.message
                             }
                         } catch (err) {
-                            alert('Error, please try again')
+                            this.errormsg = err.message
                         }
                     }
                 )

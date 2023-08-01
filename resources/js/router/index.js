@@ -10,6 +10,8 @@ import register from '../components/register.vue'
 
 import users from '../components/users.vue'
 
+import userEdit from '../components/userEdit.vue'
+
 
 const routes = [
     {
@@ -36,6 +38,11 @@ const routes = [
         path: '/:pathMatch(.*)*',
         name: 'NotFound',
         component: notFound
+    },
+    {
+      path: '/user/edit',
+      name: 'userEdit',
+      component: userEdit
     }
 ]
 

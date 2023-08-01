@@ -18,6 +18,7 @@ class AdminSeeder extends Seeder
             'username' => 'admin',
             'contact' => fake()->phoneNumber,
             'email' => 'crud_admin@growmodo.com',
+            'usertype' => 1,
             'password' => Hash::make('admin123')
         ]);
     }

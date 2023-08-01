@@ -1,43 +1,47 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <!-- <img class="logo" src="../assets/images.png"> -->
-            </div>
             <div class="col-md-12" style="padding-top: 35px;">
-                <button @click="$router.push('/home')" type="button" class="btn btn-success" style="float: left;">Back to
+                <button @click="$router.push('/')" type="button" class="btn btn-secondary"><b>&lt;</b> Back to
                     Dashboard</button>
                 <button @click.prevent="handleLogout" type="button" class="btn btn-danger" style="float: right;">Log
                     Out</button>
             </div>
-            <div class="col-md-12">
-                <h1>User List</h1>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Email Address</th>
-                                <th scope="col">Phone Number</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="user in result.users" v-bind:key="user.id">
-                                <td>{{ user.id }}</td>
-                                <td>{{ user.username }}</td>
-                                <td>{{ user.email }}</td>
-                                <td>{{ user.phone_number }}</td>
-                                <td>
-                                    <button @click.prevent="handleEdit(user.id)" type="button"
-                                        class="btn btn-warning">Edit</button>
-                                    <button @click.prevent="handleDelete(user.id)" type="button"
-                                        class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        </div><br>
+        <div class="row">
+            <div class="col-md">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Users</h5>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="table table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Username</th>
+                                        <th scope="col">Email Address</th>
+                                        <th scope="col">Contact Number</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="user in result.users" v-bind:key="user.id">
+                                        <td>{{ user.username }}</td>
+                                        <td>{{ user.email }}</td>
+                                        <td>{{ user.contact }}</td>
+                                        <td>
+                                            <button @click.prevent="handleEdit(user.id)" type="button"
+                                                class="btn btn-sm btn-primary">Edit</button> |
+                                            <button @click.prevent="handleDelete(user.id)" type="button"
+                                                class="btn btn-sm btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,7 +58,7 @@ export default {
                 id: '',
                 username: '',
                 email: '',
-                phone_number: ''
+                contact: ''
             },
             token: localStorage.getItem('token')
         }
@@ -68,7 +72,6 @@ export default {
             axios.get('/api/admin/users')
                 .then(
                     response => {
-                        console.log(response)
                         this.result = response.data
                     }
                 )
@@ -85,7 +88,6 @@ export default {
             axios.post('/api/logout', this.token)
                 .then(
                     response => {
-                        console.log(response)
                         localStorage.removeItem('token')
                         this.$router.push({ name: 'Login' })
                     }
@@ -93,7 +95,7 @@ export default {
         },
         handleEdit(ID) {
             localStorage.setItem('userID', ID)
-            this.$router.push({ name: 'EditUser' })
+            this.$router.push({ name: 'userEdit' })
         },
         handleDelete(ID) {
             axios.post('/api/delete/' + ID)
@@ -107,29 +109,3 @@ export default {
     }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1,
-h2 {
-    font-weight: normal;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-a {
-    color: #42b983;
-}
-
-.logo {
-    width: 190px;
-    max-width: 172px;
-}</style>
